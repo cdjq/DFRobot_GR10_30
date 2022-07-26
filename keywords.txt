@@ -1,0 +1,61 @@
+
+#######################################
+# Syntax Map For DFRobot_GR10_30
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_GR10_30	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+setMode	KEYWORD2
+getDataReady	KEYWORD2
+getGesturesState	KEYWORD2
+setUdlrWin	KEYWORD2
+setLeftRange	KEYWORD2
+setRightRange	KEYWORD2
+setUpRange	KEYWORD2
+setDownRange	KEYWORD2
+
+
+setForwardRange	KEYWORD2
+setBackwardRange	KEYWORD2
+setWaveNumber	KEYWORD2
+setHovrWin	KEYWORD2
+setHovrTimer	KEYWORD2
+setCwsAngle	KEYWORD2
+setCcwAngle	KEYWORD2
+setCwsAngleCount	KEYWORD2
+setCcwAngleCount	KEYWORD2
+
+
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+GR10_30_DEVICE_ADDR	LITERAL1
+GESTURE_UP	LITERAL1
+GESTURE_DOWN	LITERAL1
+GESTURE_LEFT	LITERAL1
+GESTURE_RIGHT	LITERAL1
+GESTURE_FORWARD	LITERAL1
+GESTURE_BACKWARD	LITERAL1
+GESTURE_CLOCKWISE	LITERAL1
+GESTURE_COUNTERCLOCKWISE	LITERAL1
+GESTURE_WAVE	LITERAL1
+GESTURE_HOVER	LITERAL1
+GESTURE_UNKNOWN	LITERAL1
+GESTURE_CLOCKWISE_C	LITERAL1
+GESTURE_COUNTERCLOCKWISE_C	LITERAL1
