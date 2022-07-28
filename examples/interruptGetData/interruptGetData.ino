@@ -14,7 +14,7 @@
  * @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author      [zhixinliu](zhixinliu@dfrobot.com)
- * @version     V1.0
+ * @version     V0.1
  * @date        2022-07-25
  * @url         https://github.com/DFRobor/DFRobot_GR10_30
  */

@@ -4,8 +4,8 @@
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [zhixinliu](zhixinliu@dfrobot.com)
- * @version  V1.0
- * @date  2022-05-17
+ * @version  V0.1
+ * @date  2022-07-24
  * @url https://github.com/DFRobor/DFRobot_GR10_30
  */
 #ifndef DFROBOT_GR10_30_H
@@ -57,7 +57,7 @@ public:
   #define R_CWS_ANGLE             0X14    ///> 顺时针旋转的角度 每个值代表 22.5度
   #define R_CCW_ANGLE             0X15    ///> 逆时针旋转的角度 每个值代表 22.5度
   #define R_CWS_ANGLE_COUNT       0X16    ///> 顺时针连续旋转的角度 每个值代表 22.5度
-  #define R_CCW_ANGLE_COUNT       0X17    ///> 顺时针连续旋转的角度 每个值代表 22.5度
+  #define R_CCW_ANGLE_COUNT       0X17    ///> 逆时针连续旋转的角度 每个值代表 22.5度
   #define R_RESET                 0X18    ///> 复位传感器
   
 
@@ -171,7 +171,7 @@ public:
   void setDownRange(uint8_t range);
 
   /**
-   * @fn setDownRange
+   * @fn setForwardRange
    * @brief 设置向前移动多少距离才能识别
    * @param range
    * @n     最大距离为31
@@ -180,7 +180,7 @@ public:
   void setForwardRange(uint8_t range);
 
   /**
-   * @fn setDownRange
+   * @fn setBackwardRange
    * @brief 设置向后移动多少距离才能识别
    * @param range
    * @n     最大距离为31
@@ -210,7 +210,7 @@ public:
    * @fn setHovrTimer
    * @brief 设置悬停多少时间才能触发手势
    * @param timer
-   * @n     timer 最大255 默认为31
+   * @n     timer 最大0x03ff 默认为0X3c 每个值大约15ms
    * @return NONE
    */
   void setHovrTimer(uint16_t timer);
@@ -218,7 +218,7 @@ public:
   /**
    * @fn setCwsAngle
    * @brief 设置顺时针旋转多少角度才能触发手势
-   * @param count 默认为 16
+   * @param count 默认为 16 最大31
    * @n     count 旋转的度数为22.5 * count
    * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
    * @return NONE
@@ -228,7 +228,7 @@ public:
   /**
    * @fn setCcwAngle
    * @brief 设置逆时针旋转多少角度才能触发手势
-   * @param count 默认为 16
+   * @param count 默认为 16 最大31
    * @n     count 旋转的度数为22.5 * count
    * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
    * @return NONE
@@ -238,7 +238,7 @@ public:
   /**
    * @fn setCwsAngleCount
    * @brief 设置顺时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4
+   * @param count 默认为 4 最大31
    * @n     count 连续旋转的度数为22.5 * count
    * @n     例: count = 4 22.5*count = 90
    * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
@@ -249,7 +249,7 @@ public:
   /**
    * @fn setCcwAngleCount
    * @brief 设置逆时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4
+   * @param count 默认为 4 最大31
    * @n     count 连续旋转的度数为22.5 * count
    * @n     例: count = 4 22.5*count = 90
    * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势

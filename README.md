@@ -108,7 +108,7 @@ To use this library, first download the library file, paste it into the \Arduino
   void setDownRange(uint8_t range);
 
   /**
-   * @fn setDownRange
+   * @fn setForwardRange
    * @brief 设置向前移动多少距离才能识别
    * @param range
    * @n     最大距离为31
@@ -117,7 +117,7 @@ To use this library, first download the library file, paste it into the \Arduino
   void setForwardRange(uint8_t range);
 
   /**
-   * @fn setDownRange
+   * @fn setBackwardRange
    * @brief 设置向后移动多少距离才能识别
    * @param range
    * @n     最大距离为31
@@ -147,7 +147,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setHovrTimer
    * @brief 设置悬停多少时间才能触发手势
    * @param timer
-   * @n     timer 最大255 默认为31
+   * @n     timer 最大0x03ff 默认为0X3c 每个值大约15ms
    * @return NONE
    */
   void setHovrTimer(uint16_t timer);
@@ -155,7 +155,7 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCwsAngle
    * @brief 设置顺时针旋转多少角度才能触发手势
-   * @param count 默认为 16
+   * @param count 默认为 16 最大31
    * @n     count 旋转的度数为22.5 * count
    * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
    * @return NONE
@@ -165,7 +165,7 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCcwAngle
    * @brief 设置逆时针旋转多少角度才能触发手势
-   * @param count 默认为 16
+   * @param count 默认为 16 最大31
    * @n     count 旋转的度数为22.5 * count
    * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
    * @return NONE
@@ -175,7 +175,7 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCwsAngleCount
    * @brief 设置顺时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4
+   * @param count 默认为 4 最大31
    * @n     count 连续旋转的度数为22.5 * count
    * @n     例: count = 4 22.5*count = 90
    * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
@@ -186,7 +186,7 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCcwAngleCount
    * @brief 设置逆时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4
+   * @param count 默认为 4 最大31
    * @n     count 连续旋转的度数为22.5 * count
    * @n     例: count = 4 22.5*count = 90
    * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
