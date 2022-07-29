@@ -85,6 +85,62 @@ void setup()
  */
   gr10_30.enGestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C);
 
+// 开启后使用更加详细的配置，不开启使用默认的配置
+
+/**
+ * 设置感兴趣的窗口,只在此范围内能采集的数据有效
+ * 窗口最大为31 配置的的数字代表 中心距离上下左右的距离
+ * 例如 配置上下的距离为30 中心距离上的距离为 15  距离下的范围也为15
+ * udSize 上下的距离      距离范围 0-31
+ * lrSize 左右的距离      距离范围 0-31
+ */
+//   gr10_30.setUdlrWin(30, 30);
+//   gr10_30.setHovrWin(20, 20);
+
+/**
+ * 设置滑动多少距离才能识别为手势
+ * 距离范围 0-31, 必须小于感兴趣窗口的距离
+ */
+//   gr10_30.setLeftRange(10);
+//   gr10_30.setRightRange(10);
+//   gr10_30.setUpRange(10);
+//   gr10_30.setDownRange(10);
+//   gr10_30.setForwardRange(10);
+//   gr10_30.setBackwardRange(10);
+
+/**
+ * 设置挥手多少次才能识别
+ * 次数范围 0-15
+ */
+//   gr10_30.setWaveNumber(2);
+
+/**
+ * 设置悬停多少时间才能触发手势
+ * 最大0x03ff 默认为0X3c 每个值大约10ms
+//   gr10_30.setHovrTimer(0x3C);
+
+
+/**
+ * 设置旋转多少角度才能触发手势
+ * count 默认为 16 范围1-31
+ * count 旋转的度数为22.5 * count
+ * count = 16 22.5*count = 360  旋转360度触发手势
+ */
+//   gr10_30.setCwsAngle(/*count*/16);
+//   gr10_30.setCcwAngle(/*count*/16);
+
+/**
+ * 设置连续旋转多少角度才能触发手势
+ * count 默认为 4 范围1-31
+ * count 连续旋转的度数为22.5 * count
+ * 例: count = 4 22.5*count = 90
+ * 先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+ */
+//   gr10_30.setCwsAngleCount(/*count*/8);
+//   gr10_30.setCcwAngleCount(/*count*/8);
+
+
+
 // 连接开发板的中断引脚
 #if defined(ESP32) || defined(ESP8266)
   /**!
@@ -95,10 +151,10 @@ void setup()
       All pins can be used. Pin 13 is recommended
   */
   pinMode(/*Pin */13 ,INPUT_PULLUP);
-  attachInterrupt(/*interput io*/13, myInterrupt, FALLING);
+  attachInterrupt(/*interput io*/13, myInterrupt, ONLOW);
 #elif defined(ARDUINO_SAM_ZERO)
   pinMode(/*Pin */13 ,INPUT_PULLUP);
-  attachInterrupt(/*interput io*/13, myInterrupt, FALLING);
+  attachInterrupt(/*interput io*/13, myInterrupt, LOW);
 #else
   /**!    The Correspondence Table of AVR Series Arduino Interrupt Pins And Terminal Numbers
    * ---------------------------------------------------------------------------------------
@@ -137,7 +193,7 @@ void setup()
       state
         LOW            // When the pin is at low level, the interrupt occur, enter interrupt function
   */
-  attachInterrupt(/*Interrupt No*/0, /*function*/myInterrupt ,/*state*/FALLING );
+  attachInterrupt(/*Interrupt No*/0, /*function*/myInterrupt ,/*state*/LOW );
 #endif
 }
 
@@ -187,11 +243,11 @@ void loop()
     }
     interruptFlag = 0;
     #if defined(ESP32) || defined(ESP8266)
-      attachInterrupt(13, myInterrupt, FALLING);
+      attachInterrupt(13, myInterrupt, ONLOW);
     #elif defined(ARDUINO_SAM_ZERO)
-      attachInterrupt(13, myInterrupt, FALLING);
+      attachInterrupt(13, myInterrupt, LOW);
     #else
-      attachInterrupt(0, myInterrupt, FALLING);
+      attachInterrupt(0, myInterrupt, LOW);
     #endif
   }
   delay(1);

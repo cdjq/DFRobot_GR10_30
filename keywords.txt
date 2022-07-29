@@ -15,7 +15,7 @@ DFRobot_GR10_30	KEYWORD1
 #######################################
 
 begin	KEYWORD2
-setMode	KEYWORD2
+enGestures	KEYWORD2
 getDataReady	KEYWORD2
 getGesturesState	KEYWORD2
 setUdlrWin	KEYWORD2

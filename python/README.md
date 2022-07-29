@@ -29,8 +29,8 @@ SEN0543是一个可以用软件和硬件io口获得数据的高性能手势识�
 Download this library to Raspberry Pi before use, then open the routine folder. Type python demox.py on the command line to execute a routine demox.py. For example, to execute the control_led.py routine, you need to enter:
 
 ```python
-python interrupt_get_data.py
-python soft_get_data.py
+python interrupt_get_gestures.py
+python get_gestures.py
 ```
 
 ## Methods
@@ -41,10 +41,10 @@ python soft_get_data.py
       @brief 初始化传感器
     '''
 
-  def set_mode(self, mode):
+  def en_gestures(self, gestures):
     '''!
       @brief 设置模块可以识别什么手势，才触发中断
-      @param mode 想要识别的手势
+      @param gestures 想要识别的手势
       @n     GESTURE_UP
       @n     GESTURE_DOWN
       @n     GESTURE_DOWN
@@ -54,8 +54,8 @@ python soft_get_data.py
       @n     GESTURE_BACKWARD
       @n     GESTURE_CLOCKWISE
       @n     GESTURE_COUNTERCLOCKWISE
-      @n     GESTURE_WAVE
-      @n     GESTURE_HOVER
+      @n     GESTURE_WAVE               It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
+      @n     GESTURE_HOVER             Disable other gestures when hover gesture enables.
       @n     GESTURE_UNKNOWN
       @n     GESTURE_CLOCKWISE_C
       @n     GESTURE_COUNTERCLOCKWISE_C
@@ -65,8 +65,8 @@ python soft_get_data.py
   def set_udlr_win(self, ud_size, lr_size):
     '''!
       @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      最大距离为31
-      @param lrSize 左右的距离      最大距离为31
+      @param udSize 上下的距离      距离范围 0-31
+      @param lrSize 左右的距离      距离范围 0-31
       @return NONE
     '''
 
@@ -74,7 +74,7 @@ python soft_get_data.py
     '''!
       @brief 设置向左滑动多少距离才能识别
       @param range
-      @n     最大距离为31,必须小于感兴趣的左右距离
+      @n     距离范围 0-31,必须小于感兴趣的左右距离
       @return NONE
     '''
 
@@ -82,50 +82,50 @@ python soft_get_data.py
     '''!
       @brief 设置向右滑动多少距离才能识别
       @param range
-      @n     最大距离为31,必须小于感兴趣的左右距离
+      @n     距离范围 0-31,必须小于感兴趣的左右距离
     '''
 
   def set_up_range(self, range):
     '''!
       @brief 设置向上滑动多少距离才能识别
       @param range
-      @n     最大距离为31,必须小于感兴趣的上下距离
+      @n     距离范围 0-31,必须小于感兴趣的上下距离
     '''
 
   def set_down_range(self, range):
     '''!
       @brief 设置向下滑动多少距离才能识别
       @param range
-      @n     最大距离为31,必须小于感兴趣的上下距离
+      @n     距离范围 0-31,必须小于感兴趣的上下距离
     '''
 
   def set_forward_range(self, range):
     '''!
       @brief 设置向前移动多少距离才能识别
       @param range
-      @n     最大距离为31
+      @n     距离范围 0-31
     '''
 
   def set_backward_range(self, range):
     '''!
       @brief 设置向后移动多少距离才能识别
       @param range
-      @n     最大距离为31
+      @n     距离范围 0-31
     '''
 
   def set_wave_number(self, number):
     '''!
       @brief 设置挥手多少次才能识别
       @param number
-      @n     最大次数为15
+      @n     次数范围 0-15
       @return NONE
     '''
 
   def set_hover_win(self, ud_size, lr_size):
     '''!
       @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      最大距离为31
-      @param lrSize 左右的距离      最大距离为31
+      @param udSize 上下的距离      距离范围 0-31
+      @param lrSize 左右的距离      距离范围 0-31
       @return NONE
     '''
 
@@ -160,7 +160,7 @@ python soft_get_data.py
       @param count 默认为 4 最大为31
       @n     count 连续旋转的度数为22.5 * count
       @n     例: count = 4 22.5*count = 90
-      @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
+      @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
       @return NONE
     '''
   def set_ccw_angle_count(self, count):
@@ -169,7 +169,7 @@ python soft_get_data.py
       @param count 默认为 4 最大为31
       @n     count 连续旋转的度数为22.5 * count
       @n     例: count = 4 22.5*count = 90
-      @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
+      @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
       @return NONE
     '''
 ```

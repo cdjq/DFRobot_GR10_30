@@ -41,32 +41,31 @@ To use this library, first download the library file, paste it into the \Arduino
   int8_t begin(void);
 
   /**
-   * @fn setMode
+   * @fn enGestures
    * @brief 设置模块可以识别什么手势，才触发中断
-   * @param mode
-   * @n     GESTURE_UP
-   * @n     GESTURE_DOWN
-   * @n     GESTURE_DOWN
-   * @n     GESTURE_LEFT
-   * @n     GESTURE_RIGHT
-   * @n     GESTURE_FORWARD
-   * @n     GESTURE_BACKWARD
-   * @n     GESTURE_CLOCKWISE
-   * @n     GESTURE_COUNTERCLOCKWISE
-   * @n     GESTURE_WAVE
-   * @n     GESTURE_HOVER
-   * @n     GESTURE_UNKNOWN
-   * @n     GESTURE_CLOCKWISE_C
-   * @n     GESTURE_COUNTERCLOCKWISE_C
+   * @param gestures
+   *  GESTURE_UP
+   *  GESTURE_DOWN
+   *  GESTURE_LEFT
+   *  GESTURE_RIGHT
+   *  GESTURE_FORWARD
+   *  GESTURE_BACKWARD
+   *  GESTURE_CLOCKWISE
+   *  GESTURE_COUNTERCLOCKWISE
+   *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
+   *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
+   *  GESTURE_UNKNOWN
+   *  GESTURE_CLOCKWISE_C
+   *  GESTURE_COUNTERCLOCKWISE_C
    * @return NONE
    */
-  void setMode(uint16_t mode);
+  void enGestures(uint16_t gestures);
 
   /**
    * @fn setUdlrWin
    * @brief 设置上下左右感兴趣的窗口
-   * @param udSize 上下的距离      最大距离为31
-   * @param lrSize 左右的距离      最大距离为31
+   * @param udSize 上下的距离      距离范围 0-31
+   * @param lrSize 左右的距离      距离范围 0-31
    * @return NONE
    */
   void setUdlrWin(uint8_t udSize, uint8_t lrSize);
@@ -75,7 +74,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setLeftRange
    * @brief 设置向左滑动多少距离才能识别
    * @param range
-   * @n     最大距离为31,必须小于感兴趣的左右距离
+   * @n     距离范围 0-31,必须小于感兴趣的左右距离
    * @return NONE
    */
   void setLeftRange(uint8_t range);
@@ -84,7 +83,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setRightRange
    * @brief 设置向右滑动多少距离才能识别
    * @param range
-   * @n     最大距离为31,必须小于感兴趣的左右距离
+   * @n     距离范围 0-31,必须小于感兴趣的左右距离
    * @return NONE
    */
   void setRightRange(uint8_t range);
@@ -93,7 +92,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setUpRange
    * @brief 设置向上滑动多少距离才能识别
    * @param range
-   * @n     最大距离为31,必须小于感兴趣的上下距离
+   * @n     距离范围 0-31,必须小于感兴趣的上下距离
    * @return NONE
    */
   void setUpRange(uint8_t range);
@@ -102,7 +101,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setDownRange
    * @brief 设置向下滑动多少距离才能识别
    * @param range
-   * @n     最大距离为31,必须小于感兴趣的上下距离
+   * @n     距离范围 0-31,必须小于感兴趣的上下距离
    * @return NONE
    */
   void setDownRange(uint8_t range);
@@ -111,7 +110,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setForwardRange
    * @brief 设置向前移动多少距离才能识别
    * @param range
-   * @n     最大距离为31
+   * @n     距离范围 0-31
    * @return NONE
    */
   void setForwardRange(uint8_t range);
@@ -120,7 +119,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setBackwardRange
    * @brief 设置向后移动多少距离才能识别
    * @param range
-   * @n     最大距离为31
+   * @n     距离范围 0-31
    * @return NONE
    */
   void setBackwardRange(uint8_t range);
@@ -129,7 +128,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setWaveNumber
    * @brief 设置挥手多少次才能识别
    * @param number
-   * @n     最大次数为15
+   * @n     次数范围 0-15
    * @return NONE
    */
   void setWaveNumber(uint8_t number);
@@ -137,8 +136,8 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setHovrWin
    * @brief 设置悬停感兴趣的窗口
-   * @param udSize 上下的距离      最大距离为31
-   * @param lrSize 左右的距离      最大距离为31
+   * @param udSize 上下的距离      距离范围 0-31
+   * @param lrSize 左右的距离      距离范围 0-31
    * @return NONE
    */
   void setHovrWin(uint8_t udSize, uint8_t lrSize);
@@ -147,7 +146,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setHovrTimer
    * @brief 设置悬停多少时间才能触发手势
    * @param timer
-   * @n     timer 最大0x03ff 默认为0X3c 每个值大约15ms
+   * @n     timer 1-0x3ff  10ms-10s  默认为0X3c 600ms
    * @return NONE
    */
   void setHovrTimer(uint16_t timer);
@@ -155,7 +154,7 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCwsAngle
    * @brief 设置顺时针旋转多少角度才能触发手势
-   * @param count 默认为 16 最大31
+   * @param count 默认为 16 范围1-31
    * @n     count 旋转的度数为22.5 * count
    * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
    * @return NONE
@@ -165,7 +164,7 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCcwAngle
    * @brief 设置逆时针旋转多少角度才能触发手势
-   * @param count 默认为 16 最大31
+   * @param count 默认为 16 范围1-31
    * @n     count 旋转的度数为22.5 * count
    * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
    * @return NONE
@@ -175,10 +174,10 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCwsAngleCount
    * @brief 设置顺时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4 最大31
+   * @param count 默认为 4 范围1-31
    * @n     count 连续旋转的度数为22.5 * count
    * @n     例: count = 4 22.5*count = 90
-   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
+   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
    * @return NONE
    */
   void setCwsAngleCount(uint8_t count);
@@ -186,10 +185,10 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setCcwAngleCount
    * @brief 设置逆时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4 最大31
+   * @param count 默认为 4 范围1-31
    * @n     count 连续旋转的度数为22.5 * count
    * @n     例: count = 4 22.5*count = 90
-   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次手势
+   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
    * @return NONE
    */
   void setCcwAngleCount(uint8_t count);

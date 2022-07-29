@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 '''!
-  @file  interrupt_get_data.py
+  @file  interrupt_get_gestures.py
   @brief 运行本例程可以通过树莓派的io口获取数据是否准备好，来获取手势数据
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
@@ -17,7 +17,7 @@ import time
 import RPi.GPIO as GPIO
 
 from DFRobot_GR10_30 import *
-ctype=1
+ctype=0
 ADDRESS = 0x73
 I2C_1   = 0x01
 
@@ -45,19 +45,17 @@ def setup():
     # GESTURE_BACKWARD
     # GESTURE_CLOCKWISE
     # GESTURE_COUNTERCLOCKWISE
-    # GESTURE_WAVE
-    # GESTURE_HOVER
+    # GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
+    # GESTURE_HOVER             Disable other gestures when hover gesture enables.
     # GESTURE_UNKNOWN
     # GESTURE_CLOCKWISE_C
     # GESTURE_COUNTERCLOCKWISE_C
   '''
-  #GR30_10.set_mode(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD) 
-  #GR30_10.set_mode(GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
-  GR30_10.set_mode(GESTURE_HOVER)
+  GR30_10.en_gestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
   
   GPIO.setmode(GPIO.BCM)
   '''
-    Set pin mode, configure input mode,
+    Set pin gestures, configure input gestures,
       pull_up_down=GPIO.PUD_DOWN   When pin DRDY is configured high polarity, pin RASPBERR_PIN_DRDY is configured pull-down input.
       pull_up_down=GPIO.PUD_UP     When pin DRDY is configured low polarity, pin RASPBERR_PIN_DRDY is configured pull-up input.    
   '''
@@ -72,7 +70,7 @@ def setup():
   GR30_10.set_backward_range(10)
   GR30_10.set_wave_number(5)
   GR30_10.set_hover_win(31, 31)
-  GR30_10.set_hover_timer(20)    # 每个值大约15ms
+  GR30_10.set_hover_timer(20)    # 每个值大约10ms
   GR30_10.set_cws_angle(16)
   GR30_10.set_ccw_angle(16)
   GR30_10.set_cws_angle_count(4)
@@ -108,7 +106,6 @@ def loop():
       print("continue clockwise\r\n")
     if gestrue&GESTURE_COUNTERCLOCKWISE_C != False:
       print("counter continue clockwise\r\n")
-  time.sleep(0.1)
 
 if __name__ == "__main__":
   setup()

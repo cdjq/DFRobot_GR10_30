@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 '''!
-  @file  soft_get_data.py
+  @file  get_gestures.py
   @brief 运行本例程可以获取手势
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
@@ -41,13 +41,13 @@ def setup():
     # GESTURE_BACKWARD
     # GESTURE_CLOCKWISE
     # GESTURE_COUNTERCLOCKWISE
-    # GESTURE_WAVE
-    # GESTURE_HOVER
+    # GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
+    # GESTURE_HOVER             Disable other gestures when hover gesture enables.
     # GESTURE_UNKNOWN
     # GESTURE_CLOCKWISE_C
     # GESTURE_COUNTERCLOCKWISE_C
   '''
-  GR30_10.set_mode(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
+  GR30_10.en_gestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
   
 def loop():
   #GR30_10.get_exist()

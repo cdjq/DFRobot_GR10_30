@@ -72,11 +72,11 @@ void DFRobot_GR10_30::resetSensor(void)
   delay(100);
 }
 
-void DFRobot_GR10_30::setMode(uint16_t mode)
+void DFRobot_GR10_30::enGestures(uint16_t gestures)
 {
   uint8_t _sendData[2] = {0};
-  _sendData[0] = (mode>>8)&0xC7;
-  _sendData[1] = mode;
+  _sendData[0] = (gestures>>8)&0xC7;
+  _sendData[1] = gestures;
   writeReg(R_INTERRUPT_MODE, _sendData, 2);
   delay(50);
 }
