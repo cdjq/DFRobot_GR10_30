@@ -34,7 +34,8 @@ setCwsAngle	KEYWORD2
 setCcwAngle	KEYWORD2
 setCwsAngleCount	KEYWORD2
 setCcwAngleCount	KEYWORD2
-
+getExist	KEYWORD2
+getDataReady	KEYWORD2
 
 
 #######################################

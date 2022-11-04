@@ -215,7 +215,9 @@ void DFRobot_GR10_30::setCcwAngleCount(uint8_t count)
 uint16_t DFRobot_GR10_30::getExist(void)
 {
   uint8_t _sendData[10] = {0};
-  readReg(R_WAVE_COUNT, _sendData, 2);
+  if(0xff == readReg(R_WAVE_COUNT, _sendData, 2)){
+    return 0;
+  }
   return ((uint16_t)_sendData[0]<<8)+ _sendData[1];
   
 }
@@ -223,7 +225,9 @@ uint16_t DFRobot_GR10_30::getExist(void)
 uint16_t DFRobot_GR10_30::getDataReady(void)
 {
   uint8_t _sendData[10] = {0};
-  readReg(R_DATA_READY, _sendData, 2);
+  if(0xff == readReg(R_DATA_READY, _sendData, 2)){
+    return 0;
+  }
   //DBG(((uint16_t)_sendData[0]<<8)+ _sendData[1]);
   return ((uint16_t)_sendData[0]<<8)+ _sendData[1];
 }
@@ -231,7 +235,10 @@ uint16_t DFRobot_GR10_30::getDataReady(void)
 uint16_t DFRobot_GR10_30::getGesturesState(void)
 {
   uint8_t _sendData[10] = {0};
-  readReg(R_INTERRUPT_STATE, _sendData, 2);
+  
+  if(0xff == readReg(R_INTERRUPT_STATE, _sendData, 2)){
+    return 0;
+  }
   //DBG(((uint16_t)_sendData[0]<<8)+ _sendData[1]);
   return ((uint16_t)_sendData[0]<<8)+ _sendData[1];
 }
@@ -261,10 +268,14 @@ uint8_t DFRobot_GR10_30::readReg(uint16_t reg, void *pBuf, uint8_t size)
     DBG("data error");
     return 0;
   }
+
   if(_pWire){
     _pWire->beginTransmission(_addr);
     _pWire->write(reg);
-    _pWire->endTransmission();
+    //_pWire->endTransmission();
+    if(_pWire->endTransmission() != 0){
+      return 0xFF;
+    }
     _pWire->requestFrom(_addr, size);
     for(uint8_t i = 0; i < size; i++)
       _pBuf[i] = _pWire->read();

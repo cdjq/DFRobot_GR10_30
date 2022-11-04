@@ -21,7 +21,7 @@
 #include "HardwareSerial.h"
 #endif
 
-#define ENABLE_DBG ///< 打开这个宏, 可以看到程序的详细运行过程
+//#define ENABLE_DBG ///< 打开这个宏, 可以看到程序的详细运行过程
 #ifdef ENABLE_DBG
 #define DBG(...) {Serial.print("[");Serial.print(__FUNCTION__); Serial.print("(): "); Serial.print(__LINE__); Serial.print(" ] "); Serial.println(__VA_ARGS__);}
 #else
@@ -119,7 +119,7 @@ public:
    *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
    *  GESTURE_UNKNOWN
    *  GESTURE_CLOCKWISE_C
-  *  GESTURE_COUNTERCLOCKWISE_C
+   *  GESTURE_COUNTERCLOCKWISE_C
    * @return NONE
    */
   void enGestures(uint16_t gestures);
