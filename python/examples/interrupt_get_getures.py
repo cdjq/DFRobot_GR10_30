@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 '''!
   @file  interrupt_get_gestures.py
-  @brief ÔËĞĞ±¾Àı³Ì¿ÉÒÔÍ¨¹ıÊ÷İ®ÅÉµÄio¿Ú»ñÈ¡Êı¾İÊÇ·ñ×¼±¸ºÃ£¬À´»ñÈ¡ÊÖÊÆÊı¾İ
+  @brief è¿è¡Œæœ¬ä¾‹ç¨‹å¯ä»¥é€šè¿‡æ ‘è“æ´¾çš„ioå£è·å–æ•°æ®æ˜¯å¦å‡†å¤‡å¥½ï¼Œæ¥è·å–æ‰‹åŠ¿æ•°æ®
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
   @author      zhixinliu(zhixinliu@dfrobot.com)
@@ -24,7 +24,7 @@ I2C_1   = 0x01
 
 RASPBERRY_INT_PIN = 25              #DRDY Interrupt connect pin, BCM25 i.e. GPIO 6
 if ctype==0:
-  GR30_10 = DFRobot_GR30_10_I2C(I2C_1 ,ADDRESS)
+  GR30_10 = DFRobot_GR30_10_I2C(I2C_1, ADDRESS)
 else:
   GR30_10 = DFRobot_GR30_10_UART(9600, ADDRESS)
 
@@ -70,7 +70,7 @@ def setup():
   GR30_10.set_backward_range(10)
   GR30_10.set_wave_number(5)
   GR30_10.set_hover_win(31, 31)
-  GR30_10.set_hover_timer(20)    # Ã¿¸öÖµ´óÔ¼10ms
+  GR30_10.set_hover_timer(20)    # æ¯ä¸ªå€¼å¤§çº¦10ms
   GR30_10.set_cws_angle(16)
   GR30_10.set_ccw_angle(16)
   GR30_10.set_cws_angle_count(4)
