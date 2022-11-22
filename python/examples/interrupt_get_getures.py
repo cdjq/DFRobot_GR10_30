@@ -34,7 +34,7 @@ else:
 def setup():
   while (GR30_10.begin() == False):
     print("Sensor initialize failed!!")
-  time.sleep(1)
+    time.sleep(1)
   print("Sensor  initialize success!!")
   '''
     # GESTURE_UP
@@ -48,8 +48,8 @@ def setup():
     # GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
     # GESTURE_HOVER             Disable other gestures when hover gesture enables.
     # GESTURE_UNKNOWN
-    # GESTURE_CLOCKWISE_C
-    # GESTURE_COUNTERCLOCKWISE_C
+    # GESTURE_CLOCKWISE_C        连续顺时针旋转
+    # GESTURE_COUNTERCLOCKWISE_C 连续逆时针旋转
   '''
   GR30_10.en_gestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
   
@@ -62,14 +62,16 @@ def setup():
   GPIO.setup(RASPBERRY_INT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
   
   GR30_10.set_udlr_win(20, 20)
-  GR30_10.set_left_range(21)
+  GR30_10.set_left_range(1)
   GR30_10.set_right_range(10)
   GR30_10.set_up_range(10)
   GR30_10.set_down_range(10)
+
   GR30_10.set_forward_range(10)
   GR30_10.set_backward_range(10)
+  
   GR30_10.set_wave_number(5)
-  GR30_10.set_hover_win(31, 31)
+  GR30_10.set_hover_win(30, 30)
   GR30_10.set_hover_timer(20)    # 每个值大约10ms
   GR30_10.set_cws_angle(16)
   GR30_10.set_ccw_angle(16)

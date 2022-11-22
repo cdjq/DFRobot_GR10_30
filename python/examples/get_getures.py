@@ -30,7 +30,7 @@ else:
 def setup():
   while (GR30_10.begin() == False):
     print("Sensor initialize failed!!")
-  time.sleep(1)
+    time.sleep(1)
   print("Sensor  initialize success!!")
   '''
     # GESTURE_UP
@@ -44,8 +44,8 @@ def setup():
     # GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
     # GESTURE_HOVER             Disable other gestures when hover gesture enables.
     # GESTURE_UNKNOWN
-    # GESTURE_CLOCKWISE_C
-    # GESTURE_COUNTERCLOCKWISE_C
+    # GESTURE_CLOCKWISE_C        连续顺时针旋转
+    # GESTURE_COUNTERCLOCKWISE_C 连续逆时针旋转
   '''
   GR30_10.en_gestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
   

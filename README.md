@@ -21,12 +21,15 @@ SEN0543 是一个用于图像分析传感器系统的集成姿态识别传感器
 
 ## Summary
 
-SEN0543是一个可以用软件和硬件io口获得数据的高性能手势识别传感器
+最远识别距离30cm
+可识别12种手势
+识别阈值参数可配置
+支持UART、I2C通讯
 
 
 ## Installation
 
-To use this library, first download the library file, paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in the folder.
+Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its dependencies (https://github.com/DFRobot/DFRobot_RTU) before use, paste them into the \Arduino\libraries directory, then open the sample folder and run the demo in the folder.
 
 ## Methods
 
@@ -55,8 +58,8 @@ To use this library, first download the library file, paste it into the \Arduino
    *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
    *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
    *  GESTURE_UNKNOWN
-   *  GESTURE_CLOCKWISE_C
-   *  GESTURE_COUNTERCLOCKWISE_C
+   *  GESTURE_CLOCKWISE_C           // 连续正转
+   *  GESTURE_COUNTERCLOCKWISE_C    // 连续反转
    * @return NONE
    */
   void enGestures(uint16_t gestures);
@@ -64,8 +67,8 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setUdlrWin
    * @brief 设置上下左右感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 0-31
-   * @param lrSize 左右的距离      距离范围 0-31
+   * @param udSize 上下的距离      距离范围 1-30
+   * @param lrSize 左右的距离      距离范围 1-30
    * @return NONE
    */
   void setUdlrWin(uint8_t udSize, uint8_t lrSize);
@@ -74,7 +77,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setLeftRange
    * @brief 设置向左滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的左右距离
+   * @n     距离范围 5-25,必须小于感兴趣的左右距离
    * @return NONE
    */
   void setLeftRange(uint8_t range);
@@ -83,7 +86,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setRightRange
    * @brief 设置向右滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的左右距离
+   * @n     距离范围 5-25,必须小于感兴趣的左右距离
    * @return NONE
    */
   void setRightRange(uint8_t range);
@@ -92,7 +95,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setUpRange
    * @brief 设置向上滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的上下距离
+   * @n     距离范围 5-25,必须小于感兴趣的上下距离
    * @return NONE
    */
   void setUpRange(uint8_t range);
@@ -101,7 +104,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setDownRange
    * @brief 设置向下滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的上下距离
+   * @n     距离范围 5-25,必须小于感兴趣的上下距离
    * @return NONE
    */
   void setDownRange(uint8_t range);
@@ -110,7 +113,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setForwardRange
    * @brief 设置向前移动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31
+   * @n     距离范围 1-15
    * @return NONE
    */
   void setForwardRange(uint8_t range);
@@ -119,7 +122,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setBackwardRange
    * @brief 设置向后移动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31
+   * @n     距离范围 1-15
    * @return NONE
    */
   void setBackwardRange(uint8_t range);
@@ -128,7 +131,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setWaveNumber
    * @brief 设置挥手多少次才能识别
    * @param number
-   * @n     次数范围 0-15
+   * @n     次数范围 1-15
    * @return NONE
    */
   void setWaveNumber(uint8_t number);
@@ -136,8 +139,8 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn setHovrWin
    * @brief 设置悬停感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 0-31
-   * @param lrSize 左右的距离      距离范围 0-31
+   * @param udSize 上下的距离      距离范围 1-30
+   * @param lrSize 左右的距离      距离范围 1-30
    * @return NONE
    */
   void setHovrWin(uint8_t udSize, uint8_t lrSize);
@@ -146,7 +149,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @fn setHovrTimer
    * @brief 设置悬停多少时间才能触发手势
    * @param timer
-   * @n     timer 1-0x3ff  10ms-10s  默认为0X3c 600ms
+   * @n     timer 1-200  10ms-2s  默认为 60 600ms
    * @return NONE
    */
   void setHovrTimer(uint16_t timer);

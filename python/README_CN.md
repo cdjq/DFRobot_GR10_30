@@ -22,17 +22,18 @@ SEN0543是一个用于图像分析传感器系统的集成姿态识别传感器�
 
 ## 概述
 
-SEN0543是一个可以用软件和硬件io口获得数据的高性能手势识别传感器
+最远识别距离30cm
+可识别12种手势
+识别阈值参数可配置
+支持UART、I2C通讯
 
 
 ## 库安装
 
-要使用这个库，首先将库下载到Raspberry Pi，然后打开例程文件夹。要执行一个例程demox.py，请在命令行中输入python demox.py。例如，要执行control_led.py例程，你需要输入:
+本库使用到了modbus_tk, 使用本库前先检测树莓派是否成功导入modbus_tk, 若导入失败, 请通过以下命令安装modbus_tk库 python2: pip install modbus_tk python3: pip3 install modbus_tk
 
-```python
-python interrupt_get_gestures.py
-python get_gestures.py
-```
+使用库, 首先下载库文件, 将其粘贴到指定的目录中, 然后打开Examples文件夹并在该文件夹中运行演示。
+
 
 ## 方法
 
@@ -58,16 +59,16 @@ python get_gestures.py
       @n     GESTURE_WAVE               It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
       @n     GESTURE_HOVER             Disable other gestures when hover gesture enables.
       @n     GESTURE_UNKNOWN
-      @n     GESTURE_CLOCKWISE_C
-      @n     GESTURE_COUNTERCLOCKWISE_C
+      @n     GESTURE_CLOCKWISE_C        连续正转
+      @n     GESTURE_COUNTERCLOCKWISE_C 连续反转
       @return NONE
     '''
 
   def set_udlr_win(self, ud_size, lr_size):
     '''!
       @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      距离范围 0-31
-      @param lrSize 左右的距离      距离范围 0-31
+      @param udSize 上下的距离      距离范围 1-30
+      @param lrSize 左右的距离      距离范围 1-30
       @return NONE
     '''
 
@@ -75,7 +76,7 @@ python get_gestures.py
     '''!
       @brief 设置向左滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的左右距离
+      @n     距离范围 5-25,必须小于感兴趣的左右距离
       @return NONE
     '''
 
@@ -83,58 +84,58 @@ python get_gestures.py
     '''!
       @brief 设置向右滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的左右距离
+      @n     距离范围 5-25,必须小于感兴趣的左右距离
     '''
 
   def set_up_range(self, range):
     '''!
       @brief 设置向上滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的上下距离
+      @n     距离范围 5-25,必须小于感兴趣的上下距离
     '''
 
   def set_down_range(self, range):
     '''!
       @brief 设置向下滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的上下距离
+      @n     距离范围 5-25,必须小于感兴趣的上下距离
     '''
 
   def set_forward_range(self, range):
     '''!
       @brief 设置向前移动多少距离才能识别
       @param range
-      @n     距离范围 0-31
+      @n     距离范围 1-15
     '''
 
   def set_backward_range(self, range):
     '''!
       @brief 设置向后移动多少距离才能识别
       @param range
-      @n     距离范围 0-31
+      @n     距离范围 1-15
     '''
 
   def set_wave_number(self, number):
     '''!
       @brief 设置挥手多少次才能识别
       @param number
-      @n     次数范围 0-15
+      @n     次数范围 1-15
       @return NONE
     '''
 
   def set_hover_win(self, ud_size, lr_size):
     '''!
       @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      距离范围 0-31
-      @param lrSize 左右的距离      距离范围 0-31
+      @param udSize 上下的距离      距离范围 1-30
+      @param lrSize 左右的距离      距离范围 1-30
       @return NONE
     '''
 
   def set_hover_timer(self, timer):
     '''!
       @brief 设置悬停多少时间才能触发手势
-      @param timer
-      @n     timer 最大0x03ff 默认为0X3c
+      @param timer 每个值代表10ms
+      @n     timer 最大 为200  默认为60 600ms
     '''
 
   def set_cws_angle(self, count):

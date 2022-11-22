@@ -122,8 +122,8 @@ class DFRobot_GR10_30():
       @n     GESTURE_WAVE               It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
       @n     GESTURE_HOVER              Disable other gestures when hover gesture enables.
       @n     GESTURE_UNKNOWN
-      @n     GESTURE_CLOCKWISE_C
-      @n     GESTURE_COUNTERCLOCKWISE_C
+      @n     GESTURE_CLOCKWISE_C        连续正转
+      @n     GESTURE_COUNTERCLOCKWISE_C 连续反转
       @return NONE
     '''
     gestures = gestures&0xc7ff
@@ -139,8 +139,8 @@ class DFRobot_GR10_30():
   def set_udlr_win(self, ud_size, lr_size):
     '''!
       @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      距离范围 0-31
-      @param lrSize 左右的距离      距离范围 0-31
+      @param udSize 上下的距离      距离范围 1-30
+      @param lrSize 左右的距离      距离范围 1-30
       @return NONE
     '''
     lr_size = lr_size&0x001f
@@ -158,7 +158,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置向左滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的左右距离
+      @n     距离范围 5-25,必须小于感兴趣的左右距离
       @return NONE
     '''
     range = range&0x1f
@@ -175,7 +175,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置向右滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的左右距离
+      @n     距离范围 5-25,必须小于感兴趣的左右距离
     '''
     range = range&0x1f
     if self._uart_i2c == I2C_MODE:
@@ -191,7 +191,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置向上滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的上下距离
+      @n     距离范围 5-25,必须小于感兴趣的上下距离
     '''
     range = range&0x1f
     if self._uart_i2c == I2C_MODE:
@@ -207,7 +207,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置向下滑动多少距离才能识别
       @param range
-      @n     距离范围 0-31,必须小于感兴趣的上下距离
+      @n     距离范围 5-25,必须小于感兴趣的上下距离
     '''
     range = range&0x1f
     if self._uart_i2c == I2C_MODE:
@@ -223,7 +223,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置向前移动多少距离才能识别
       @param range
-      @n     距离范围 0-31
+      @n     距离范围 1-15
     '''
     range = range&0x1f
     if self._uart_i2c == I2C_MODE:
@@ -239,7 +239,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置向后移动多少距离才能识别
       @param range
-      @n     距离范围 0-31
+      @n     距离范围 1-15
     '''
     range = range&0x1f
     if self._uart_i2c == I2C_MODE:
@@ -255,7 +255,7 @@ class DFRobot_GR10_30():
     '''!
       @brief 设置挥手多少次才能识别
       @param number
-      @n     次数范围 0-15
+      @n     次数范围 1-15
       @return NONE
     '''
     number = number&0x0f
@@ -271,8 +271,8 @@ class DFRobot_GR10_30():
   def set_hover_win(self, ud_size, lr_size):
     '''!
       @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      距离范围 0-31
-      @param lrSize 左右的距离      距离范围 0-31
+      @param udSize 上下的距离      距离范围 1-30
+      @param lrSize 左右的距离      距离范围 1-30
       @return NONE
     '''
     lr_size = lr_size&0x001f
@@ -289,8 +289,8 @@ class DFRobot_GR10_30():
   def set_hover_timer(self, timer):
     '''!
       @brief 设置悬停多少时间才能触发手势
-      @param timer
-      @n     timer 最大0x03ff 默认为0X3c
+      @param timer 每个值10ms
+      @n     timer 最大200  默认为60 600ms
     '''
     timer = timer&0x03FF
     if self._uart_i2c == I2C_MODE:

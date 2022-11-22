@@ -33,32 +33,32 @@ public:
   #define GR10_30_DEVICE_ADDR          0x73
   //输入寄存器
   #define GR10_30_INPUTREG_PID         0x00   ///< 设备PID
-  #define GR10_30_INPUTREG_VID         0x01   ///<设备的VID,固定为0x3343
-  #define GR10_30_INPUTREG_ADDR        0x02   ///<模块的设备地址
-  #define GR10_30_INPUTREG_BAUDRATE    0x03   ///<串口波特率
-  #define GR10_30_INPUTREG_STOPBIT     0x04   ///<串口校验位和停止位
-  #define GR10_30_INPUTREG_VERSION     0x05   ///<固件版本信息
-  #define R_DATA_READY                 0X06   ///<数据准备好的寄存器
-  #define R_INTERRUPT_STATE            0X07   ///<中断状态的寄存器
-  #define R_EXIST_STATE                0X08   ///<物体是否存在的寄存器
+  #define GR10_30_INPUTREG_VID         0x01   ///< 设备的VID,固定为0x3343
+  #define GR10_30_INPUTREG_ADDR        0x02   ///< 模块的设备地址
+  #define GR10_30_INPUTREG_BAUDRATE    0x03   ///< 串口波特率
+  #define GR10_30_INPUTREG_STOPBIT     0x04   ///< 串口校验位和停止位
+  #define GR10_30_INPUTREG_VERSION     0x05   ///< 固件版本信息
+  #define R_DATA_READY                 0X06   ///< 数据准备好的寄存器
+  #define R_INTERRUPT_STATE            0X07   ///< 中断状态的寄存器
+  #define R_EXIST_STATE                0X08   ///< 物体是否存在的寄存器
 
   //保持寄存器
-  #define R_INTERRUPT_MODE        0X09    ///> 产生中断的手势
-  #define R_LRUP_WIN              0X0A    ///> 上下左右感兴趣的窗口
-  #define R_L_RANGE               0X0B    ///> 向左滑动的距离
-  #define R_R_RANGE               0X0C    ///> 向右滑动的距离
-  #define R_U_RANGE               0X0D    ///> 向上滑动的距离
-  #define R_D_RANGE               0X0E    ///> 向下滑动的距离
-  #define R_FORWARD_RANGE         0X0F    ///> 向前滑动的距离
-  #define R_BACKUP_RANGE          0X10    ///> 向后滑动的距离
-  #define R_WAVE_COUNT            0X11    ///> 挥手次数
-  #define R_HOVR_WIN              0X12    ///> 悬停感兴趣的窗口
-  #define R_HOVR_TIMER            0X13    ///> 悬停的时间
-  #define R_CWS_ANGLE             0X14    ///> 顺时针旋转的角度 每个值代表 22.5度
-  #define R_CCW_ANGLE             0X15    ///> 逆时针旋转的角度 每个值代表 22.5度
-  #define R_CWS_ANGLE_COUNT       0X16    ///> 顺时针连续旋转的角度 每个值代表 22.5度
-  #define R_CCW_ANGLE_COUNT       0X17    ///> 逆时针连续旋转的角度 每个值代表 22.5度
-  #define R_RESET                 0X18    ///> 复位传感器
+  #define R_INTERRUPT_MODE        0X09    ///< 产生中断的手势
+  #define R_LRUP_WIN              0X0A    ///< 上下左右感兴趣的窗口
+  #define R_L_RANGE               0X0B    ///< 向左滑动的距离
+  #define R_R_RANGE               0X0C    ///< 向右滑动的距离
+  #define R_U_RANGE               0X0D    ///< 向上滑动的距离
+  #define R_D_RANGE               0X0E    ///< 向下滑动的距离
+  #define R_FORWARD_RANGE         0X0F    ///< 向前滑动的距离
+  #define R_BACKUP_RANGE          0X10    ///< 向后滑动的距离
+  #define R_WAVE_COUNT            0X11    ///< 挥手次数
+  #define R_HOVR_WIN              0X12    ///< 悬停感兴趣的窗口
+  #define R_HOVR_TIMER            0X13    ///< 悬停的时间
+  #define R_CWS_ANGLE             0X14    ///< 顺时针旋转的角度 每个值代表 22.5度
+  #define R_CCW_ANGLE             0X15    ///< 逆时针旋转的角度 每个值代表 22.5度
+  #define R_CWS_ANGLE_COUNT       0X16    ///< 顺时针连续旋转的角度 每个值代表 22.5度
+  #define R_CCW_ANGLE_COUNT       0X17    ///< 逆时针连续旋转的角度 每个值代表 22.5度
+  #define R_RESET                 0X18    ///< 复位传感器
   
 
   #define GESTURE_UP                      (1<<0)
@@ -72,8 +72,8 @@ public:
   #define GESTURE_WAVE                    (1<<8)
   #define GESTURE_HOVER                   (1<<9)
   #define GESTURE_UNKNOWN                 (1<<10)
-  #define GESTURE_CLOCKWISE_C             (1<<14)
-  #define GESTURE_COUNTERCLOCKWISE_C      (1<<15)
+  #define GESTURE_CLOCKWISE_C             (1<<14)   ///< 连续顺时针旋转
+  #define GESTURE_COUNTERCLOCKWISE_C      (1<<15)   ///< 连续逆时针旋转
 
   /**
    * @fn DFRobot_GR10_30
@@ -118,8 +118,8 @@ public:
    *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
    *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
    *  GESTURE_UNKNOWN
-   *  GESTURE_CLOCKWISE_C
-   *  GESTURE_COUNTERCLOCKWISE_C
+   *  GESTURE_CLOCKWISE_C           // 连续正转
+   *  GESTURE_COUNTERCLOCKWISE_C    // 连续反转
    * @return NONE
    */
   void enGestures(uint16_t gestures);
@@ -127,8 +127,8 @@ public:
   /**
    * @fn setUdlrWin
    * @brief 设置上下左右感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 0-31
-   * @param lrSize 左右的距离      距离范围 0-31
+   * @param udSize 上下的距离      距离范围 1-30
+   * @param lrSize 左右的距离      距离范围 1-30
    * @return NONE
    */
   void setUdlrWin(uint8_t udSize, uint8_t lrSize);
@@ -137,7 +137,7 @@ public:
    * @fn setLeftRange
    * @brief 设置向左滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的左右距离
+   * @n     距离范围 5-25,必须小于感兴趣的左右距离
    * @return NONE
    */
   void setLeftRange(uint8_t range);
@@ -146,7 +146,7 @@ public:
    * @fn setRightRange
    * @brief 设置向右滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的左右距离
+   * @n     距离范围 5-25,必须小于感兴趣的左右距离
    * @return NONE
    */
   void setRightRange(uint8_t range);
@@ -155,7 +155,7 @@ public:
    * @fn setUpRange
    * @brief 设置向上滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的上下距离
+   * @n     距离范围 5-25,必须小于感兴趣的上下距离
    * @return NONE
    */
   void setUpRange(uint8_t range);
@@ -164,7 +164,7 @@ public:
    * @fn setDownRange
    * @brief 设置向下滑动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31,必须小于感兴趣的上下距离
+   * @n     距离范围 5-25,必须小于感兴趣的上下距离
    * @return NONE
    */
   void setDownRange(uint8_t range);
@@ -173,7 +173,7 @@ public:
    * @fn setForwardRange
    * @brief 设置向前移动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31
+   * @n     距离范围 1-15
    * @return NONE
    */
   void setForwardRange(uint8_t range);
@@ -182,7 +182,7 @@ public:
    * @fn setBackwardRange
    * @brief 设置向后移动多少距离才能识别
    * @param range
-   * @n     距离范围 0-31
+   * @n     距离范围 1-15
    * @return NONE
    */
   void setBackwardRange(uint8_t range);
@@ -191,7 +191,7 @@ public:
    * @fn setWaveNumber
    * @brief 设置挥手多少次才能识别
    * @param number
-   * @n     次数范围 0-15
+   * @n     次数范围 1-15
    * @return NONE
    */
   void setWaveNumber(uint8_t number);
@@ -199,8 +199,8 @@ public:
   /**
    * @fn setHovrWin
    * @brief 设置悬停感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 0-31
-   * @param lrSize 左右的距离      距离范围 0-31
+   * @param udSize 上下的距离      距离范围 1-30
+   * @param lrSize 左右的距离      距离范围 1-30
    * @return NONE
    */
   void setHovrWin(uint8_t udSize, uint8_t lrSize);
@@ -209,7 +209,7 @@ public:
    * @fn setHovrTimer
    * @brief 设置悬停多少时间才能触发手势
    * @param timer
-   * @n     timer 1-0x3ff  10ms-10s  默认为0X3c 600ms
+   * @n     timer 1-200  10ms-2s  默认为 60 600ms
    * @return NONE
    */
   void setHovrTimer(uint16_t timer);

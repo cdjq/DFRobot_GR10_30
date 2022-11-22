@@ -68,44 +68,48 @@ void setup()
  *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
  *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
  *  GESTURE_UNKNOWN
- *  GESTURE_CLOCKWISE_C
- *  GESTURE_COUNTERCLOCKWISE_C
+ *  GESTURE_CLOCKWISE_C          连续顺时针旋转
+ *  GESTURE_COUNTERCLOCKWISE_C   连续逆时针旋转
  */
   gr10_30.enGestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C);
 
 // 开启后使用更加详细的配置，不开启使用默认的配置
 /**
  * 设置感兴趣的窗口,只在此范围内能采集的数据有效
- * 窗口最大为31 配置的的数字代表 中心距离上下左右的距离
+ * 窗口最大为30 配置的的数字代表 中心距离上下左右的距离
  * 例如 配置上下的距离为30 中心距离上的距离为 15  距离下的范围也为15
- * udSize 上下的距离范围      0-31
- * lrSize 左右的距离范围      0-31
+ * udSize 上下的距离范围      1-30
+ * lrSize 左右的距离范围      1-30
  */
 //   gr10_30.setUdlrWin(30, 30);
 //   gr10_30.setHovrWin(20, 20);
 
 /**
  * 设置滑动多少距离才能识别为手势
- * 距离范围0-31, 必须小于感兴趣窗口的距离
+ * 距离范围 5-25, 必须小于感兴趣窗口的距离
  */
 //   gr10_30.setLeftRange(10);
 //   gr10_30.setRightRange(10);
 //   gr10_30.setUpRange(10);
 //   gr10_30.setDownRange(10);
+/**
+ * 设置前后移动多少距离才能识别为手势
+ * 距离范围 1-15
+ */
 //   gr10_30.setForwardRange(10);
 //   gr10_30.setBackwardRange(10);
 
 /**
  * 设置挥手多少次才能识别
- * 次数范围 0-15
+ * 次数范围 1-15
  */
 //   gr10_30.setWaveNumber(2);
 
 /**
  * 设置悬停多少时间才能触发手势
- * 1-0x3ff  10ms-10s  默认为0X3c 600ms
+ * 1 - 200  10ms-2s  默认为60 600ms
  */
-//   gr10_30.setHovrTimer(0x3C);
+//   gr10_30.setHovrTimer(60);
 
 /**
  * 设置旋转多少角度才能触发手势
