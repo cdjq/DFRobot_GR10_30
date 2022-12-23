@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_GR10_30.h
- * @brief 这是GR10_30的方法说明文件
+ * @brief This is the method description file of GR10_30
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [zhixinliu](zhixinliu@dfrobot.com)
@@ -21,7 +21,7 @@
 #include "HardwareSerial.h"
 #endif
 
-//#define ENABLE_DBG ///< 打开这个宏, 可以看到程序的详细运行过程
+//#define ENABLE_DBG ///< Enable this macro to see the detailed running process of the program
 #ifdef ENABLE_DBG
 #define DBG(...) {Serial.print("[");Serial.print(__FUNCTION__); Serial.print("(): "); Serial.print(__LINE__); Serial.print(" ] "); Serial.println(__VA_ARGS__);}
 #else
@@ -31,34 +31,34 @@
 class DFRobot_GR10_30:public DFRobot_RTU{
 public:
   #define GR10_30_DEVICE_ADDR          0x73
-  //输入寄存器
-  #define GR10_30_INPUTREG_PID         0x00   ///< 设备PID
-  #define GR10_30_INPUTREG_VID         0x01   ///< 设备的VID,固定为0x3343
-  #define GR10_30_INPUTREG_ADDR        0x02   ///< 模块的设备地址
-  #define GR10_30_INPUTREG_BAUDRATE    0x03   ///< 串口波特率
-  #define GR10_30_INPUTREG_STOPBIT     0x04   ///< 串口校验位和停止位
-  #define GR10_30_INPUTREG_VERSION     0x05   ///< 固件版本信息
-  #define R_DATA_READY                 0X06   ///< 数据准备好的寄存器
-  #define R_INTERRUPT_STATE            0X07   ///< 中断状态的寄存器
-  #define R_EXIST_STATE                0X08   ///< 物体是否存在的寄存器
+  //Input Register
+  #define GR10_30_INPUTREG_PID         0x00   ///< Device PID
+  #define GR10_30_INPUTREG_VID         0x01   ///< VID of the device, fixed to be 0x3343
+  #define GR10_30_INPUTREG_ADDR        0x02   ///< Device address of the module
+  #define GR10_30_INPUTREG_BAUDRATE    0x03   ///< Serial baud rate
+  #define GR10_30_INPUTREG_STOPBIT     0x04   ///< Serial check bit and stop bit
+  #define GR10_30_INPUTREG_VERSION     0x05   ///< Firmware version information
+  #define R_DATA_READY                 0X06   ///< Data ready register
+  #define R_INTERRUPT_STATE            0X07   ///< Register for interrupt status
+  #define R_EXIST_STATE                0X08   ///< Register for object presence 
 
-  //保持寄存器
-  #define R_INTERRUPT_MODE        0X09    ///< 产生中断的手势
-  #define R_LRUP_WIN              0X0A    ///< 上下左右感兴趣的窗口
-  #define R_L_RANGE               0X0B    ///< 向左滑动的距离
-  #define R_R_RANGE               0X0C    ///< 向右滑动的距离
-  #define R_U_RANGE               0X0D    ///< 向上滑动的距离
-  #define R_D_RANGE               0X0E    ///< 向下滑动的距离
-  #define R_FORWARD_RANGE         0X0F    ///< 向前滑动的距离
-  #define R_BACKUP_RANGE          0X10    ///< 向后滑动的距离
-  #define R_WAVE_COUNT            0X11    ///< 挥手次数
-  #define R_HOVR_WIN              0X12    ///< 悬停感兴趣的窗口
-  #define R_HOVR_TIMER            0X13    ///< 悬停的时间
-  #define R_CWS_ANGLE             0X14    ///< 顺时针旋转的角度 每个值代表 22.5度
-  #define R_CCW_ANGLE             0X15    ///< 逆时针旋转的角度 每个值代表 22.5度
-  #define R_CWS_ANGLE_COUNT       0X16    ///< 顺时针连续旋转的角度 每个值代表 22.5度
-  #define R_CCW_ANGLE_COUNT       0X17    ///< 逆时针连续旋转的角度 每个值代表 22.5度
-  #define R_RESET                 0X18    ///< 复位传感器
+  //Holding register
+  #define R_INTERRUPT_MODE        0X09    ///< The gesture that can trigger interrupt
+  #define R_LRUP_WIN              0X0A    ///< The detection window you want
+  #define R_L_RANGE               0X0B    ///< Distance of moving to left
+  #define R_R_RANGE               0X0C    ///< Distance of moving to right
+  #define R_U_RANGE               0X0D    ///< Distance of moving up
+  #define R_D_RANGE               0X0E    ///< Distance of moving down 
+  #define R_FORWARD_RANGE         0X0F    ///< Distance of moving forward
+  #define R_BACKUP_RANGE          0X10    ///< Distance of moving backward
+  #define R_WAVE_COUNT            0X11    ///< Number of waves
+  #define R_HOVR_WIN              0X12    ///< Hover detection window
+  #define R_HOVR_TIMER            0X13    ///< Hovering time
+  #define R_CWS_ANGLE             0X14    ///< Clockwise rotation angle, each value represents 22.5 degrees
+  #define R_CCW_ANGLE             0X15    ///< Counterclockwise rotation angle, each value represents 22.5 degrees
+  #define R_CWS_ANGLE_COUNT       0X16    ///< Continuous clockwise rotation angle, each value represents 22.5 degrees
+  #define R_CCW_ANGLE_COUNT       0X17    ///< Continuous counterclockwise rotation angle, each value represents 22.5 degrees
+  #define R_RESET                 0X18    ///< Reset sensor
   
 
   #define GESTURE_UP                      (1<<0)
@@ -72,8 +72,8 @@ public:
   #define GESTURE_WAVE                    (1<<8)
   #define GESTURE_HOVER                   (1<<9)
   #define GESTURE_UNKNOWN                 (1<<10)
-  #define GESTURE_CLOCKWISE_C             (1<<14)   ///< 连续顺时针旋转
-  #define GESTURE_COUNTERCLOCKWISE_C      (1<<15)   ///< 连续逆时针旋转
+  #define GESTURE_CLOCKWISE_C             (1<<14)   ///< Rotate clockwise continuously
+  #define GESTURE_COUNTERCLOCKWISE_C      (1<<15)   ///< Rotate counterclockwise continuously
 
   /**
    * @fn DFRobot_GR10_30
@@ -105,7 +105,7 @@ public:
 
   /**
    * @fn enGestures
-   * @brief 设置模块可以识别什么手势，才触发中断
+   * @brief Set the gestures that can be recognized by the module and trigger interrupt
    * @param gestures
    *  GESTURE_UP
    *  GESTURE_DOWN
@@ -118,96 +118,96 @@ public:
    *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
    *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
    *  GESTURE_UNKNOWN
-   *  GESTURE_CLOCKWISE_C           // 连续正转
-   *  GESTURE_COUNTERCLOCKWISE_C    // 连续反转
+   *  GESTURE_CLOCKWISE_C           // Rotate clockwise continuously
+   *  GESTURE_COUNTERCLOCKWISE_C    // Rotate counterclockwise continuously
    * @return NONE
    */
   void enGestures(uint16_t gestures);
 
   /**
    * @fn setUdlrWin
-   * @brief 设置上下左右感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 1-30
-   * @param lrSize 左右的距离      距离范围 1-30
+   * @brief Set the detection window you want
+   * @param udSize Distance from top to bottom      distance range 1-30
+   * @param lrSize Distance from left to right      distance range 1-30
    * @return NONE
    */
   void setUdlrWin(uint8_t udSize, uint8_t lrSize);
 
   /**
    * @fn setLeftRange
-   * @brief 设置向左滑动多少距离才能识别
+   * @brief Set distance of moving to left that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的左右距离
+   * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
    */
   void setLeftRange(uint8_t range);
 
   /**
    * @fn setRightRange
-   * @brief 设置向右滑动多少距离才能识别
+   * @brief Set distance of moving to right that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的左右距离
+   * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
    */
   void setRightRange(uint8_t range);
 
   /**
    * @fn setUpRange
-   * @brief 设置向上滑动多少距离才能识别
+   * @brief Set distance of moving up that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的上下距离
+   * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
    */
   void setUpRange(uint8_t range);
 
   /**
    * @fn setDownRange
-   * @brief 设置向下滑动多少距离才能识别
+   * @brief Set distance of moving down that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的上下距离
+   * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
    */
   void setDownRange(uint8_t range);
 
   /**
    * @fn setForwardRange
-   * @brief 设置向前移动多少距离才能识别
+   * @brief Set distance of moving forward that can be recognized
    * @param range
-   * @n     距离范围 1-15
+   * @n     Distance range 1-15
    * @return NONE
    */
   void setForwardRange(uint8_t range);
 
   /**
    * @fn setBackwardRange
-   * @brief 设置向后移动多少距离才能识别
+   * @brief Set distance of moving backward that can be recognized
    * @param range
-   * @n     距离范围 1-15
+   * @n     Distance range 1-15
    * @return NONE
    */
   void setBackwardRange(uint8_t range);
 
   /**
    * @fn setWaveNumber
-   * @brief 设置挥手多少次才能识别
+   * @brief Set wave number that can be recognized
    * @param number
-   * @n     次数范围 1-15
+   * @n     Number range 1-15
    * @return NONE
    */
   void setWaveNumber(uint8_t number);
 
   /**
    * @fn setHovrWin
-   * @brief 设置悬停感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 1-30
-   * @param lrSize 左右的距离      距离范围 1-30
+   * @brief Set hover detection window
+   * @param udSize Distance from top to bottom      distance range 1-30
+   * @param lrSize Distance from left to right      distance range 1-30
    * @return NONE
    */
   void setHovrWin(uint8_t udSize, uint8_t lrSize);
 
   /**
    * @fn setHovrTimer
-   * @brief 设置悬停多少时间才能触发手势
+   * @brief Set hover time that can trigger the gesture
    * @param timer
    * @n     timer 1-200  10ms-2s  默认为 60 600ms
    * @return NONE
@@ -216,68 +216,70 @@ public:
 
   /**
    * @fn setCwsAngle
-   * @brief 设置顺时针旋转多少角度才能触发手势
-   * @param count 默认为 16 范围1-31
-   * @n     count 旋转的度数为22.5 * count
-   * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
+   * @brief Set clockwise rotation angle that can trigger the gesture
+   * @param count Default is 16 range 1-31
+   * @n     count Rotation angle is 22.5 * count
+   * @n     For example: count = 16 22.5*count = 360  Rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCwsAngle(uint8_t count);
 
   /**
    * @fn setCcwAngle
-   * @brief 设置逆时针旋转多少角度才能触发手势
-   * @param count 默认为 16 范围1-31
-   * @n     count 旋转的度数为22.5 * count
-   * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
+   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @param count Default is 16 range 1-31
+   * @n     count Rotation angle is 22.5 * count
+   * @n     For example: count = 16 22.5*count = 360  Rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCcwAngle(uint8_t count);
 
   /**
    * @fn setCwsAngleCount
-   * @brief 设置顺时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4 范围1-31
-   * @n     count 连续旋转的度数为22.5 * count
-   * @n     例: count = 4 22.5*count = 90
-   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+   * @brief Set clockwise rotation angle that can trigger the gesture
+   * @param count Default is 4 range 1-31
+   * @n     count The degree of continuous rotation is 22.5 * count
+   * @n     For example: count = 4 22.5*count = 90
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+   * @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
    * @return NONE
    */
   void setCwsAngleCount(uint8_t count);
 
   /**
    * @fn setCcwAngleCount
-   * @brief 设置逆时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4 范围1-31
-   * @n     count 连续旋转的度数为22.5 * count
-   * @n     例: count = 4 22.5*count = 90
-   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @param count Default is 4 range 1-31
+   * @n     count The degree of continuous rotation is 22.5 * count
+   * @n     For example: count = 4 22.5*count = 90
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+   * @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
    * @return NONE
    */
   void setCcwAngleCount(uint8_t count);
 
   /**
    * @fn getExist
-   * @brief 获取物体是否在传感器检测范围内
-   * @return 是否存在
-   * @retval 1  存在
-   * @retval 0  不存在
+   * @brief Get whether the object is in the detection range of sensor
+   * @return Is the object in the detection range of sensor
+   * @retval 1  Yes
+   * @retval 0  No
    */
   uint16_t getExist(void);
 
   /**
    * @fn getDataReady
-   * @brief 获取是否检测到手势了
-   * @return 是否检测到手势
-   * @retval 1  检测到手势
-   * @retval 0  未检测到手势
+   * @brief Get if a gesture is detected
+   * @return Is the gesture detected
+   * @retval 1  Detected
+   * @retval 0  Not detected
    */
   uint16_t getDataReady(void);
 
   /**
    * @fn getGesturesState
-   * @brief 获取手势类型
-   * @return 手势类型
+   * @brief Get gesture type
+   * @return Gesture type
    * @retval GESTURE_UP
    * @retval GESTURE_DOWN
    * @retval GESTURE_DOWN
