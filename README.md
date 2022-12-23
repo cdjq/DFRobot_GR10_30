@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 * [中文版](./README_CN.md)
 
-SEN0543 是一个用于图像分析传感器系统的集成姿态识别传感器。它可以识别10种手势，如上、下、左、右、前、后、圆顺时针、圆逆时针、摆动和悬停。
+The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 12 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise, rotate clockwise & counterclockwise continuously, hover, and wave. 
 
 ![产品效果图片](../../resources/images/SEN0543.png)
   
@@ -21,10 +21,10 @@ SEN0543 是一个用于图像分析传感器系统的集成姿态识别传感器
 
 ## Summary
 
-最远识别距离30cm
-可识别12种手势
-识别阈值参数可配置
-支持UART、I2C通讯
+Maximum Recognition distance of 30cm
+Capable of recognizing 12 gestures
+Configurable recognition threshold & other parameters
+Support UART & I2C communication
 
 
 ## Installation
@@ -45,7 +45,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn enGestures
-   * @brief 设置模块可以识别什么手势，才触发中断
+   * @brief Set the gestures that can be recognized by the module and trigger interrupt
    * @param gestures
    *  GESTURE_UP
    *  GESTURE_DOWN
@@ -58,96 +58,96 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
    *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
    *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
    *  GESTURE_UNKNOWN
-   *  GESTURE_CLOCKWISE_C           // 连续正转
-   *  GESTURE_COUNTERCLOCKWISE_C    // 连续反转
+   *  GESTURE_CLOCKWISE_C           // Rotate clockwise continuously
+   *  GESTURE_COUNTERCLOCKWISE_C    // Rotate counterclockwise continuously
    * @return NONE
    */
   void enGestures(uint16_t gestures);
 
   /**
    * @fn setUdlrWin
-   * @brief 设置上下左右感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 1-30
-   * @param lrSize 左右的距离      距离范围 1-30
+   * @brief Set the detection window you want
+   * @param udSize Distance from top to bottom      distance range 1-30
+   * @param lrSize Distance from left to right      distance range 1-30
    * @return NONE
    */
   void setUdlrWin(uint8_t udSize, uint8_t lrSize);
 
   /**
    * @fn setLeftRange
-   * @brief 设置向左滑动多少距离才能识别
+   * @brief Set distance of moving to left that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的左右距离
+   * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
    */
   void setLeftRange(uint8_t range);
 
   /**
    * @fn setRightRange
-   * @brief 设置向右滑动多少距离才能识别
+   * @brief Set distance of moving to right that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的左右距离
+   * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
    */
   void setRightRange(uint8_t range);
 
   /**
    * @fn setUpRange
-   * @brief 设置向上滑动多少距离才能识别
+   * @brief Set distance of moving up that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的上下距离
+   * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
    */
   void setUpRange(uint8_t range);
 
   /**
    * @fn setDownRange
-   * @brief 设置向下滑动多少距离才能识别
+   * @brief Set distance of moving down that can be recognized
    * @param range
-   * @n     距离范围 5-25,必须小于感兴趣的上下距离
+   * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
    */
   void setDownRange(uint8_t range);
 
   /**
    * @fn setForwardRange
-   * @brief 设置向前移动多少距离才能识别
+   * @brief Set distance of moving forward that can be recognized
    * @param range
-   * @n     距离范围 1-15
+   * @n     Distance range 1-15
    * @return NONE
    */
   void setForwardRange(uint8_t range);
 
   /**
    * @fn setBackwardRange
-   * @brief 设置向后移动多少距离才能识别
+   * @brief Set distance of moving backward that can be recognized
    * @param range
-   * @n     距离范围 1-15
+   * @n     Distance range 1-15
    * @return NONE
    */
   void setBackwardRange(uint8_t range);
 
   /**
    * @fn setWaveNumber
-   * @brief 设置挥手多少次才能识别
+   * @brief Set wave number that can be recognized
    * @param number
-   * @n     次数范围 1-15
+   * @n     Number range 1-15
    * @return NONE
    */
   void setWaveNumber(uint8_t number);
 
   /**
    * @fn setHovrWin
-   * @brief 设置悬停感兴趣的窗口
-   * @param udSize 上下的距离      距离范围 1-30
-   * @param lrSize 左右的距离      距离范围 1-30
+   * @brief Set hover detection window
+   * @param udSize Distance from top to bottom      distance range 1-30
+   * @param lrSize Distance from left to right      distance range 1-30
    * @return NONE
    */
   void setHovrWin(uint8_t udSize, uint8_t lrSize);
 
   /**
    * @fn setHovrTimer
-   * @brief 设置悬停多少时间才能触发手势
+   * @brief Set hover time that can trigger the gesture
    * @param timer
    * @n     timer 1-200  10ms-2s  默认为 60 600ms
    * @return NONE
@@ -156,68 +156,68 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setCwsAngle
-   * @brief 设置顺时针旋转多少角度才能触发手势
-   * @param count 默认为 16 范围1-31
-   * @n     count 旋转的度数为22.5 * count
-   * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
+   * @brief Set clockwise rotation angle that can trigger the gesture
+   * @param count Default is 16 range 1-31
+   * @n     count Rotation angle is 22.5 * count
+   * @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCwsAngle(uint8_t count);
 
   /**
    * @fn setCcwAngle
-   * @brief 设置逆时针旋转多少角度才能触发手势
-   * @param count 默认为 16 范围1-31
-   * @n     count 旋转的度数为22.5 * count
-   * @n     例: count = 16 22.5*count = 360  旋转360度触发手势
+   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @param count Default is 16 range 1-31
+   * @n     count Rotation angle is 22.5 * count
+   * @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCcwAngle(uint8_t count);
 
   /**
    * @fn setCwsAngleCount
-   * @brief 设置顺时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4 范围1-31
-   * @n     count 连续旋转的度数为22.5 * count
-   * @n     例: count = 4 22.5*count = 90
-   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+   * @brief Set clockwise rotation angle that can trigger the gesture
+   * @param count Default is 4 range 1-31
+   * @n     count The degree of continuous rotation is 22.5 * count
+   * @n     For example: count = 4 22.5*count = 90
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
    * @return NONE
    */
   void setCwsAngleCount(uint8_t count);
 
   /**
    * @fn setCcwAngleCount
-   * @brief 设置逆时针连续旋转多少角度才能触发手势
-   * @param count 默认为 4 范围1-31
-   * @n     count 连续旋转的度数为22.5 * count
-   * @n     例: count = 4 22.5*count = 90
-   * @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @param count Default is 4 range 1-31
+   * @n     count The degree of continuous rotation is 22.5 * count
+   * @n     For example: count = 4 22.5*count = 90
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
    * @return NONE
    */
   void setCcwAngleCount(uint8_t count);
 
   /**
    * @fn getExist
-   * @brief 获取物体是否在传感器检测范围内
-   * @return 是否存在
-   * @retval 1  存在
-   * @retval 0  不存在
+   * @brief Get whether the object is in the detection range of sensor
+   * @return Is the object in the detection range of sensor
+   * @retval 1  Yes
+   * @retval 0  No
    */
   uint16_t getExist(void);
 
   /**
    * @fn getDataReady
-   * @brief 获取是否检测到手势了
-   * @return 是否检测到手势
-   * @retval 1  检测到手势
-   * @retval 0  未检测到手势
+   * @brief Get if a gesture is detected
+   * @return Is the gesture detected
+   * @retval 1  Detected
+   * @retval 0  Not detected
    */
   uint16_t getDataReady(void);
 
   /**
    * @fn getGesturesState
-   * @brief 获取手势类型
-   * @return 手势类型
+   * @brief Get gesture type
+   * @return Gesture type
    * @retval GESTURE_UP
    * @retval GESTURE_DOWN
    * @retval GESTURE_DOWN
