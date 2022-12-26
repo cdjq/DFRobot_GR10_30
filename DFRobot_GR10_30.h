@@ -236,7 +236,7 @@ public:
 
   /**
    * @fn setCwsAngleCount
-   * @brief Set clockwise rotation angle that can trigger the gesture
+   * @brief Set continuous clockwise rotation angle that can trigger the gesture
    * @param count Default is 4 range 1-31
    * @n     count The degree of continuous rotation is 22.5 * count
    * @n     For example: count = 4 22.5*count = 90
@@ -248,7 +248,7 @@ public:
 
   /**
    * @fn setCcwAngleCount
-   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @brief Set continuous counterclockwise rotation angle that can trigger the gesture
    * @param count Default is 4 range 1-31
    * @n     count The degree of continuous rotation is 22.5 * count
    * @n     For example: count = 4 22.5*count = 90
@@ -261,7 +261,7 @@ public:
   /**
    * @fn getExist
    * @brief Get whether the object is in the detection range of sensor
-   * @return Is the object in the detection range of sensor
+   * @return If the object is in the detection range of sensor
    * @retval 1  Yes
    * @retval 0  No
    */
@@ -270,7 +270,7 @@ public:
   /**
    * @fn getDataReady
    * @brief Get if a gesture is detected
-   * @return Is the gesture detected
+   * @return If the gesture is detected
    * @retval 1  Detected
    * @retval 0  Not detected
    */
