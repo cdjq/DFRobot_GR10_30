@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_GR10_30.cpp
- * @brief 这是GR10_30的方法实现文件
+ * @brief This is the method implementation file of GR10_30.
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [zhixinliu](zhixinliu@dfrobot.com)
