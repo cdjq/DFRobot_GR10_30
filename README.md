@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 * [中文版](./README_CN.md)
 
-The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 12 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise, rotate clockwise & counterclockwise continuously, hover, and wave. 
+The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave. 
 
 ![产品效果图片](../../resources/images/SEN0543.png)
   
@@ -21,9 +21,9 @@ The SEN0543 is an integrated gesture recognition sensor that can be used for ima
 
 ## Summary
 
-Maximum Recognition distance of 30cm
-Capable of recognizing 12 gestures
-Configurable recognition threshold & other parameters
+Maximum Recognition distance of 30cm<br/>
+Capable of recognizing 12 gestures<br/>
+Configurable recognition threshold & other parameters<br/>
 Support UART & I2C communication
 
 
@@ -176,7 +176,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setCwsAngleCount
-   * @brief Set clockwise rotation angle that can trigger the gesture
+   * @brief Set continuous clockwise rotation angle that can trigger the gesture
    * @param count Default is 4 range 1-31
    * @n     count The degree of continuous rotation is 22.5 * count
    * @n     For example: count = 4 22.5*count = 90
@@ -187,7 +187,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setCcwAngleCount
-   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @brief Set continuous counterclockwise rotation angle that can trigger the gesture
    * @param count Default is 4 range 1-31
    * @n     count The degree of continuous rotation is 22.5 * count
    * @n     For example: count = 4 22.5*count = 90
@@ -199,7 +199,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
   /**
    * @fn getExist
    * @brief Get whether the object is in the detection range of sensor
-   * @return Is the object in the detection range of sensor
+   * @return If the object is in the detection range of sensor
    * @retval 1  Yes
    * @retval 0  No
    */
@@ -208,7 +208,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
   /**
    * @fn getDataReady
    * @brief Get if a gesture is detected
-   * @return Is the gesture detected
+   * @return If the gesture is detected
    * @retval 1  Detected
    * @retval 0  Not detected
    */
