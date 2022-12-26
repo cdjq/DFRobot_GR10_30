@@ -76,7 +76,7 @@ void setup()
 // Use detailed config if enabled; use the default config if not enabled
 /**
  * Set the detection window you want, only data collected in the range are valid
- * The largest window is 31, the configured number represents distance from the center to the top, bottom, left and right
+ * The largest window is 30, the configured number represents distance from the center to the top, bottom, left and right
  * For example, if the configured distance from top to bottom is 30, then the distance from center to top is 15, and distance from center to bottom is also 15
  * udSize Range of distance from top to bottom      1-30
  * lrSize Range of distance from left to right      1-30
