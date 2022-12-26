@@ -149,7 +149,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
    * @fn setHovrTimer
    * @brief Set hover time that can trigger the gesture
    * @param timer
-   * @n     timer 1-200  10ms-2s  默认为 60 600ms
+   * @n     timer 1-200  10ms-2s  default is 60 600ms
    * @return NONE
    */
   void setHovrTimer(uint16_t timer);
