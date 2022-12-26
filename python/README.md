@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 - [中文版](./README_CN.md)
 
-The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 12 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise, rotate clockwise & counterclockwise continuously, hover, and wave.
+The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave.
 
 ![产品效果图](../../resources/images/SEN0543.png)
 
@@ -156,7 +156,7 @@ Download the library file before use, paste them into the specified directory, t
     
   def set_cws_angle_count(self, count):
     '''!
-      @brief Set clockwise rotation angle that can trigger the gesture
+      @brief Set continuous clockwise rotation angle that can trigger the gesture
       @param count Default is 4 maximum is 31
       @n     count The degree of continuous rotation is 22.5 * count
       @n     For example: count = 4 22.5*count = 90
@@ -165,7 +165,7 @@ Download the library file before use, paste them into the specified directory, t
     '''
   def set_ccw_angle_count(self, count):
     '''!
-      @brief Set counterclockwise rotation angle that can trigger the gesture
+      @brief Set continuous counterclockwise rotation angle that can trigger the gesture
       @param count Default is 4 maximum is 31
       @n     count The degree of continuous rotation is 22.5 * count
       @n     For example: count = 4 22.5*count = 90
