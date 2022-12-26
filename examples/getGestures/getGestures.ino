@@ -1,6 +1,6 @@
 /*!
  * @file  getGestures.ino
- * @brief 运行本例程读取手势的类型
+ * @brief Run the routine to read gesture type
  * @n
  * @n connected table
  * ---------------------------------------------------------------------------------------------------------------
@@ -24,8 +24,8 @@
 #include <SoftwareSerial.h>
 #endif
 
-//#define UARTMODE // 串口模式
-#define I2CMODE // i2c模式
+//#define UARTMODE // Serial mode
+#define I2CMODE // I2C mode
 #if defined UARTMODE
 #if defined(ARDUINO_AVR_UNO)||defined(ESP8266)
   SoftwareSerial mySerial(/*rx =*/4, /*tx =*/5);
@@ -56,7 +56,7 @@ void setup()
     delay(1000);
   }
   Serial.println(" Sensor  initialize success!!");
-/** 设置想要获取的手势
+/** Set the gesture to be enabled
  *  GESTURE_UP
  *  GESTURE_DOWN
  *  GESTURE_LEFT
@@ -68,64 +68,64 @@ void setup()
  *  GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
  *  GESTURE_HOVER             Disable other gestures when hover gesture enables.
  *  GESTURE_UNKNOWN
- *  GESTURE_CLOCKWISE_C          连续顺时针旋转
- *  GESTURE_COUNTERCLOCKWISE_C   连续逆时针旋转
+ *  GESTURE_CLOCKWISE_C          Rotate clockwise continuously
+ *  GESTURE_COUNTERCLOCKWISE_C   Rotate counterclockwise continuously
  */
   gr10_30.enGestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C);
 
-// 开启后使用更加详细的配置，不开启使用默认的配置
+// Use detailed config if enabled; use the default config if not enabled
 /**
- * 设置感兴趣的窗口,只在此范围内能采集的数据有效
- * 窗口最大为30 配置的的数字代表 中心距离上下左右的距离
- * 例如 配置上下的距离为30 中心距离上的距离为 15  距离下的范围也为15
- * udSize 上下的距离范围      1-30
- * lrSize 左右的距离范围      1-30
+ * Set the detection window you want, only data collected in the range are valid
+ * The largest window is 31, the configured number represents distance from the center to the top, bottom, left and right
+ * For example, if the configured distance from top to bottom is 30, then the distance from center to top is 15, and distance from center to bottom is also 15
+ * udSize Range of distance from top to bottom      1-30
+ * lrSize Range of distance from left to right      1-30
  */
 //   gr10_30.setUdlrWin(30, 30);
 //   gr10_30.setHovrWin(20, 20);
 
 /**
- * 设置滑动多少距离才能识别为手势
- * 距离范围 5-25, 必须小于感兴趣窗口的距离
+ * Set moving distance that can be recognized as a gesture
+ * Distance range 5-25, must be less than distances of the detection window
  */
 //   gr10_30.setLeftRange(10);
 //   gr10_30.setRightRange(10);
 //   gr10_30.setUpRange(10);
 //   gr10_30.setDownRange(10);
 /**
- * 设置前后移动多少距离才能识别为手势
- * 距离范围 1-15
+ * Set distance of moving forward and backward that can be recognized as a gesture
+ * Distance range 1-15
  */
 //   gr10_30.setForwardRange(10);
 //   gr10_30.setBackwardRange(10);
 
 /**
- * 设置挥手多少次才能识别
- * 次数范围 1-15
+ * Set wave number that can be recognized
+ * Number range 1-15
  */
 //   gr10_30.setWaveNumber(2);
 
 /**
- * 设置悬停多少时间才能触发手势
- * 1 - 200  10ms-2s  默认为60 600ms
+ * Set hover time that can trigger the gesture
+ * 1 - 200  10ms-2s  Default is 60 600ms
  */
 //   gr10_30.setHovrTimer(60);
 
 /**
- * 设置旋转多少角度才能触发手势
- * count 默认为 16 范围 0-31
- * count 旋转的度数为22.5 * count
- * count = 16 22.5*count = 360  旋转360度触发手势
+ * Set rotation angle that can trigger the gesture
+ * count Default is 16 range 0-31
+ * count Rotation angle is 22.5 * count
+ * count = 16 22.5*count = 360  Rotate 360° to trigger the gesture
  */
 //   gr10_30.setCwsAngle(/*count*/16);
 //   gr10_30.setCcwAngle(/*count*/16);
 
 /**
- * 设置连续旋转多少角度才能触发手势
- * count 默认为 4  范围 0-31
- * count 连续旋转的度数为22.5 * count
- * 例: count = 4 22.5*count = 90
- * 先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+ * Set degrees of continuous rotation that can trigger the gesture
+ * count Default is 4  range 0-31
+ * count The degrees of continuous rotation is 22.5 * count
+ * For example: count = 4 22.5*count = 90
+ * Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
  */
 //   gr10_30.setCwsAngleCount(/*count*/8);
 //   gr10_30.setCcwAngleCount(/*count*/8);
