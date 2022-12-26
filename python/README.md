@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 - [中文版](./README_CN.md)
 
-SEN0543是一个用于图像分析传感器系统的集成姿态识别传感器。它可以识别10种手势，如上、下、左、右、前、后、圆顺时针、圆逆时针、摆动和悬停。
+The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 12 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise, rotate clockwise & counterclockwise continuously, hover, and wave.
 
 ![产品效果图](../../resources/images/SEN0543.png)
 
@@ -22,10 +22,10 @@ SEN0543是一个用于图像分析传感器系统的集成姿态识别传感器�
 
 ## Summary
 
-最远识别距离30cm
-可识别12种手势
-识别阈值参数可配置
-支持UART、I2C通讯
+Maximum Recognition distance of 30cm<br/>
+Capable of recognizing 12 gestures<br/>
+Configurable recognition threshold & other parameters<br/>
+Support UART & I2C communication
 
 ## Installation
 
@@ -38,13 +38,13 @@ Download the library file before use, paste them into the specified directory, t
 ```python
   def begin(self):
     '''!
-      @brief 初始化传感器
+      @brief Init the sensor
     '''
 
   def en_gestures(self, gestures):
     '''!
-      @brief 设置模块可以识别什么手势，才触发中断
-      @param gestures 想要识别的手势
+      @brief Set the gestures that can be recognized by the module and trigger interrupt
+      @param gestures Set the gesture to be enabled
       @n     GESTURE_UP
       @n     GESTURE_DOWN
       @n     GESTURE_DOWN
@@ -57,119 +57,119 @@ Download the library file before use, paste them into the specified directory, t
       @n     GESTURE_WAVE               It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
       @n     GESTURE_HOVER             Disable other gestures when hover gesture enables.
       @n     GESTURE_UNKNOWN
-      @n     GESTURE_CLOCKWISE_C        连续正转
-      @n     GESTURE_COUNTERCLOCKWISE_C 连续反转
+      @n     GESTURE_CLOCKWISE_C        Rotate clockwise continuously
+      @n     GESTURE_COUNTERCLOCKWISE_C Rotate counterclockwise continuously
       @return NONE
     '''
 
   def set_udlr_win(self, ud_size, lr_size):
     '''!
-      @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      距离范围 1-30
-      @param lrSize 左右的距离      距离范围 1-30
+      @brief Set the detection window you want
+      @param udSize Distance from top to bottom      distance range 1-30
+      @param lrSize Distance from left to right      distance range 1-30
       @return NONE
     '''
 
   def set_left_range(self, range):
     '''!
-      @brief 设置向左滑动多少距离才能识别
+      @brief Set distance of moving to left that can be recognized
       @param range
-      @n     距离范围 5-25,必须小于感兴趣的左右距离
+      @n     Distance range 5-25, must be less than distance from left to right of the detection window
       @return NONE
     '''
 
   def set_right_range(self, range):
     '''!
-      @brief 设置向右滑动多少距离才能识别
+      @brief Set distance of moving to right that can be recognized
       @param range
-      @n     距离范围 5-25,必须小于感兴趣的左右距离
+      @n     Distance range 5-25, must be less than distance from left to right of the detection window
     '''
 
   def set_up_range(self, range):
     '''!
-      @brief 设置向上滑动多少距离才能识别
+      @brief Set distance of moving up that can be recognized
       @param range
-      @n     距离范围 5-25,必须小于感兴趣的上下距离
+      @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
     '''
 
   def set_down_range(self, range):
     '''!
-      @brief 设置向下滑动多少距离才能识别
+      @brief Set distance of moving down that can be recognized
       @param range
-      @n     距离范围 5-25,必须小于感兴趣的上下距离
+      @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
     '''
 
   def set_forward_range(self, range):
     '''!
-      @brief 设置向前移动多少距离才能识别
+      @brief Set distance of moving forward that can be recognized
       @param range
-      @n     距离范围 1-15
+      @n     Distance range 1-15
     '''
 
   def set_backward_range(self, range):
     '''!
-      @brief 设置向后移动多少距离才能识别
+      @brief Set distance of moving backward that can be recognized
       @param range
-      @n     距离范围 1-15
+      @n     Distance range 1-15
     '''
 
   def set_wave_number(self, number):
     '''!
-      @brief 设置挥手多少次才能识别
+      @brief Set wave number that can be recognized
       @param number
-      @n     次数范围 1-15
+      @n     Number range 1-15
       @return NONE
     '''
 
   def set_hover_win(self, ud_size, lr_size):
     '''!
-      @brief 设置上下左右感兴趣的窗口
-      @param udSize 上下的距离      距离范围 1-30
-      @param lrSize 左右的距离      距离范围 1-30
+      @brief Set hover detection window
+      @param udSize Distance from top to bottom      distance range 1-30
+      @param lrSize Distance from left to right      distance range 1-30
       @return NONE
     '''
 
   def set_hover_timer(self, timer):
     '''!
-      @brief 设置悬停多少时间才能触发手势
-      @param timer 每个值代表10ms
-      @n     timer 最大 为200  默认为60 600ms
+      @brief Set hover time that can trigger the gesture
+      @param timer Each value represents 10ms
+      @n     timer Maximum is 200  default is 60 600ms
     '''
 
   def set_cws_angle(self, count):
     '''!
-      @brief 设置顺时针旋转多少角度才能触发手势
-      @param count 默认为 16 最大为31
-      @n     count 旋转的度数为22.5 * count
-      @n     例: count = 16 22.5*count = 360  旋转360度触发手势
+      @brief Set clockwise rotation angle that can trigger the gesture
+      @param count Default is 16 maximum is 31
+      @n     count Rotation angle is 22.5 * count
+      @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
       @return NONE
     '''
 
   def set_ccw_angle(self, count):
     '''!
-      @brief 设置逆时针旋转多少角度才能触发手势
-      @param count 默认为 16 最大为31
-      @n     count 旋转的度数为22.5 * count
-      @n     例: count = 16 22.5*count = 360  旋转360度触发手势
+      @brief Set counterclockwise rotation angle that can trigger the gesture
+      @param count Default is 16 maximum is 31
+      @n     count Rotation angle is 22.5 * count
+      @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
       @return NONE
     '''
     
   def set_cws_angle_count(self, count):
     '''!
-      @brief 设置顺时针连续旋转多少角度才能触发手势
-      @param count 默认为 4 最大为31
-      @n     count 连续旋转的度数为22.5 * count
-      @n     例: count = 4 22.5*count = 90
-      @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+      @brief Set clockwise rotation angle that can trigger the gesture
+      @param count Default is 4 maximum is 31
+      @n     count The degree of continuous rotation is 22.5 * count
+      @n     For example: count = 4 22.5*count = 90
+      @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
       @return NONE
     '''
   def set_ccw_angle_count(self, count):
     '''!
-      @brief 设置逆时针连续旋转多少角度才能触发手势
-      @param count 默认为 4 最大为31
-      @n     count 连续旋转的度数为22.5 * count
-      @n     例: count = 4 22.5*count = 90
-      @n     先触发顺/逆时针旋转手势, 当还继续旋转时, 每90度触发一次连续旋转手势
+      @brief Set counterclockwise rotation angle that can trigger the gesture
+      @param count Default is 4 maximum is 31
+      @n     count The degree of continuous rotation is 22.5 * count
+      @n     For example: count = 4 22.5*count = 90
+      @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
       @return NONE
     '''
 ```
