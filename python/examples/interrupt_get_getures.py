@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 '''!
   @file  interrupt_get_gestures.py
-  @brief 运行本例程可以通过树莓派的io口获取数据是否准备好，来获取手势数据
+  @brief Run the routine and you can get if data is ready through IO port of Raspberry Pi, and get gesture data
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
   @author      zhixinliu(zhixinliu@dfrobot.com)
@@ -48,8 +48,8 @@ def setup():
     # GESTURE_WAVE              It is not suggested to enable rotation gesture (CW/CCW) and wave gesture at the same time.
     # GESTURE_HOVER             Disable other gestures when hover gesture enables.
     # GESTURE_UNKNOWN
-    # GESTURE_CLOCKWISE_C        连续顺时针旋转
-    # GESTURE_COUNTERCLOCKWISE_C 连续逆时针旋转
+    # GESTURE_CLOCKWISE_C        Rotate clockwise continuously
+    # GESTURE_COUNTERCLOCKWISE_C Rotate counterclockwise continuously
   '''
   GR30_10.en_gestures(GESTURE_UP|GESTURE_DOWN|GESTURE_LEFT|GESTURE_RIGHT|GESTURE_FORWARD|GESTURE_BACKWARD|GESTURE_CLOCKWISE|GESTURE_COUNTERCLOCKWISE|GESTURE_CLOCKWISE_C|GESTURE_COUNTERCLOCKWISE_C)
   
@@ -72,7 +72,7 @@ def setup():
   
   GR30_10.set_wave_number(5)
   GR30_10.set_hover_win(30, 30)
-  GR30_10.set_hover_timer(20)    # 每个值大约10ms
+  GR30_10.set_hover_timer(20)    # Each value is about 10ms
   GR30_10.set_cws_angle(16)
   GR30_10.set_ccw_angle(16)
   GR30_10.set_cws_angle_count(4)
