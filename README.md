@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 * [中文版](./README_CN.md)
 
-The SEN0543 is an integrated gesture recognition sensor based on image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave. 
+The GR10-30 gesture sensor is an integrated gesture recognition sensor based on image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave. 
 
 ![product image](../../resources/images/SEN0543.png)
   
