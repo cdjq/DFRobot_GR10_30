@@ -180,7 +180,8 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
    * @param count Default 4, range 1-31
    * @n     count Continuous rotation angle = 22.5 * count
    * @n     For example: count = 4, 22.5*count = 90
-   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90° 
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+   * @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90° 
    * @return NONE
    */
   void setCwsAngleCount(uint8_t count);
@@ -191,7 +192,8 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
    * @param count Default 4,  range 1-31
    * @n     count Continuous rotation angle = 22.5 * count
    * @n     For example: count = 4 22.5*count = 90
-   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90° 
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+   * @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90° 
    * @return NONE
    */
   void setCcwAngleCount(uint8_t count);
