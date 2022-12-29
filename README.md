@@ -3,9 +3,9 @@ DFRobot_GR10_30
 
 * [中文版](./README_CN.md)
 
-The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave. 
+The SEN0543 is an integrated gesture recognition sensor based on image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave. 
 
-![产品效果图片](../../resources/images/SEN0543.png)
+![product image](../../resources/images/SEN0543.png)
   
 ## Product Link (https://www.dfrobot.com)
     SKU: SEN0543
@@ -45,7 +45,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn enGestures
-   * @brief Set the gestures that can be recognized by the module and trigger interrupt
+   * @brief Set what the gestures that can be recognized by the module before triggering interrupt
    * @param gestures
    *  GESTURE_UP
    *  GESTURE_DOWN
@@ -66,7 +66,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setUdlrWin
-   * @brief Set the detection window you want
+   * @brief Set the detection window 
    * @param udSize Distance from top to bottom      distance range 1-30
    * @param lrSize Distance from left to right      distance range 1-30
    * @return NONE
@@ -75,7 +75,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setLeftRange
-   * @brief Set distance of moving to left that can be recognized
+   * @brief SSet how far your hand should move to the left so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
@@ -84,7 +84,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setRightRange
-   * @brief Set distance of moving to right that can be recognized
+   * @brief Set how far your hand should move to the right so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
@@ -93,7 +93,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setUpRange
-   * @brief Set distance of moving up that can be recognized
+   * @brief Set how far your hand should move up so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
@@ -102,7 +102,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setDownRange
-   * @brief Set distance of moving down that can be recognized
+   * @brief Set how far your hand should move down so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
@@ -111,7 +111,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setForwardRange
-   * @brief Set distance of moving forward that can be recognized
+   * @brief Set how far your hand should move forward so the sensor can recognize it
    * @param range
    * @n     Distance range 1-15
    * @return NONE
@@ -120,7 +120,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setBackwardRange
-   * @brief Set distance of moving backward that can be recognized
+   * @brief Set how far your hand should move backward so the sensor can recognize it 
    * @param range
    * @n     Distance range 1-15
    * @return NONE
@@ -129,7 +129,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setWaveNumber
-   * @brief Set wave number that can be recognized
+   * @brief Set how many times you need to wave hands so the sensor can recognize it
    * @param number
    * @n     Number range 1-15
    * @return NONE
@@ -147,7 +147,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setHovrTimer
-   * @brief Set hover time that can trigger the gesture
+   * @brief Set how long your hand should hover to trigger the gesture
    * @param timer
    * @n     timer 1-200  10ms-2s  default is 60 600ms
    * @return NONE
@@ -156,17 +156,17 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setCwsAngle
-   * @brief Set clockwise rotation angle that can trigger the gesture
-   * @param count Default is 16 range 1-31
-   * @n     count Rotation angle is 22.5 * count
-   * @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
+   * @brief Set how many degrees your hand should rotate clockwise to trigger the gesture
+   * @param count Default 16,  range 1-31
+   * @n     count Rotation angle = 22.5 * count
+   * @n     For example: count = 16, 22.5*count = 360, rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCwsAngle(uint8_t count);
 
   /**
    * @fn setCcwAngle
-   * @brief Set counterclockwise rotation angle that can trigger the gesture
+   * @brief Set how many degrees your hand should rotate counterclockwise to trigger the gesture
    * @param count Default is 16 range 1-31
    * @n     count Rotation angle is 22.5 * count
    * @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
@@ -176,30 +176,30 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setCwsAngleCount
-   * @brief Set continuous clockwise rotation angle that can trigger the gesture
-   * @param count Default is 4 range 1-31
-   * @n     count The degree of continuous rotation is 22.5 * count
-   * @n     For example: count = 4 22.5*count = 90
-   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
+   * @brief Set how many degrees your hand should rotate clockwise continuously to trigger the gesture
+   * @param count Default 4, range 1-31
+   * @n     count Continuous rotation angle = 22.5 * count
+   * @n     For example: count = 4, 22.5*count = 90
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90° 
    * @return NONE
    */
   void setCwsAngleCount(uint8_t count);
 
   /**
    * @fn setCcwAngleCount
-   * @brief Set continuous counterclockwise rotation angle that can trigger the gesture
-   * @param count Default is 4 range 1-31
-   * @n     count The degree of continuous rotation is 22.5 * count
+   * @brief Set how many degrees your hand should rotate counterclockwise continuously to trigger the gesture
+   * @param count Default 4,  range 1-31
+   * @n     count Continuous rotation angle = 22.5 * count
    * @n     For example: count = 4 22.5*count = 90
-   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
+   * @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90° 
    * @return NONE
    */
   void setCcwAngleCount(uint8_t count);
 
   /**
    * @fn getExist
-   * @brief Get whether the object is in the detection range of sensor
-   * @return If the object is in the detection range of sensor
+   * @brief Get whether the object is in the sensor detection range
+   * @return If the object is in the sensor detection range
    * @retval 1  Yes
    * @retval 0  No
    */
@@ -208,7 +208,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
   /**
    * @fn getDataReady
    * @brief Get if a gesture is detected
-   * @return If the gesture is detected
+   * @return If a gesture is detected
    * @retval 1  Detected
    * @retval 0  Not detected
    */
