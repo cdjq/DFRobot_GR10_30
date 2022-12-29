@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_GR10_30.h
- * @brief This is the method description file of GR10_30
+ * @brief This file demostrates the method for using GR10_30
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author [zhixinliu](zhixinliu@dfrobot.com)
@@ -105,7 +105,7 @@ public:
 
   /**
    * @fn enGestures
-   * @brief Set the gestures that can be recognized by the module and trigger interrupt
+   * @brief Set what gestures the module can recognize to trigger interrupt
    * @param gestures
    *  GESTURE_UP
    *  GESTURE_DOWN
@@ -135,7 +135,7 @@ public:
 
   /**
    * @fn setLeftRange
-   * @brief Set distance of moving to left that can be recognized
+   * @brief Set how far your hand should move to the left so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
@@ -144,7 +144,7 @@ public:
 
   /**
    * @fn setRightRange
-   * @brief Set distance of moving to right that can be recognized
+   * @brief Set how far your hand should move to the right so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
@@ -153,7 +153,7 @@ public:
 
   /**
    * @fn setUpRange
-   * @brief Set distance of moving up that can be recognized
+   * @brief Set how far your hand should move up so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
@@ -162,7 +162,7 @@ public:
 
   /**
    * @fn setDownRange
-   * @brief Set distance of moving down that can be recognized
+   * @brief Set how far your hand should move down so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
    * @return NONE
@@ -171,7 +171,7 @@ public:
 
   /**
    * @fn setForwardRange
-   * @brief Set distance of moving forward that can be recognized
+   * @brief Set how far your hand should move forward so the sensor can recognize it
    * @param range
    * @n     Distance range 1-15
    * @return NONE
@@ -180,7 +180,7 @@ public:
 
   /**
    * @fn setBackwardRange
-   * @brief Set distance of moving backward that can be recognized
+   * @brief Set how far your hand should move backward so the sensor can recognize it 
    * @param range
    * @n     Distance range 1-15
    * @return NONE
@@ -189,7 +189,7 @@ public:
 
   /**
    * @fn setWaveNumber
-   * @brief Set wave number that can be recognized
+   * @brief Set how many times you need to wave hands so the sensor can recognize it
    * @param number
    * @n     Number range 1-15
    * @return NONE
@@ -207,7 +207,7 @@ public:
 
   /**
    * @fn setHovrTimer
-   * @brief Set hover time that can trigger the gesture
+   * @brief Set how long your hand should hover to trigger the gesture
    * @param timer
    * @n     timer 1-200  10ms-2s  默认为 60 600ms
    * @return NONE
@@ -216,30 +216,30 @@ public:
 
   /**
    * @fn setCwsAngle
-   * @brief Set clockwise rotation angle that can trigger the gesture
-   * @param count Default is 16 range 1-31
-   * @n     count Rotation angle is 22.5 * count
-   * @n     For example: count = 16 22.5*count = 360  Rotate 360° to trigger the gesture
+   * @brief Set how many degrees your hand should rotate clockwise to trigger the gesture
+   * @param count Default 16, range 1-31
+   * @n     count Rotation angle = 22.5 * count
+   * @n     For example: count = 16, 22.5*count = 360  Rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCwsAngle(uint8_t count);
 
   /**
    * @fn setCcwAngle
-   * @brief Set counterclockwise rotation angle that can trigger the gesture
-   * @param count Default is 16 range 1-31
-   * @n     count Rotation angle is 22.5 * count
-   * @n     For example: count = 16 22.5*count = 360  Rotate 360° to trigger the gesture
+   * @brief Set how many degrees your hand should rotate counterclockwise to trigger the gesture
+   * @param count Default 16, range 1-31
+   * @n     count Rotation angle = 22.5 * count
+   * @n     For example: count = 16, 22.5*count = 360  Rotate 360° to trigger the gesture
    * @return NONE
    */
   void setCcwAngle(uint8_t count);
 
   /**
    * @fn setCwsAngleCount
-   * @brief Set continuous clockwise rotation angle that can trigger the gesture
-   * @param count Default is 4 range 1-31
-   * @n     count The degree of continuous rotation is 22.5 * count
-   * @n     For example: count = 4 22.5*count = 90
+   * @brief Set how many degrees your hand should rotate clockwise continuously to trigger the gesture
+   * @param count Default 4, range 1-31
+   * @n     count Continuous rotation angle = 22.5 * count
+   * @n     For example: count = 4, 22.5*count = 90
    * @n     Trigger the clockwise/counterclockwise rotation gesture first, 
    * @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
    * @return NONE
@@ -248,10 +248,10 @@ public:
 
   /**
    * @fn setCcwAngleCount
-   * @brief Set continuous counterclockwise rotation angle that can trigger the gesture
-   * @param count Default is 4 range 1-31
-   * @n     count The degree of continuous rotation is 22.5 * count
-   * @n     For example: count = 4 22.5*count = 90
+   * @brief Set how many degrees your hand should rotate counterclockwise continuously to trigger the gesture
+   * @param count Default 4, range 1-31
+   * @n     count Continuous rotation angle = 22.5 * count
+   * @n     For example: count = 4, 22.5*count = 90
    * @n     Trigger the clockwise/counterclockwise rotation gesture first, 
    * @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
    * @return NONE
@@ -260,8 +260,8 @@ public:
 
   /**
    * @fn getExist
-   * @brief Get whether the object is in the detection range of sensor
-   * @return If the object is in the detection range of sensor
+   * @brief Get whether the object is in the sensor detection range
+   * @return If the object is in the sensor detection range
    * @retval 1  Yes
    * @retval 0  No
    */
@@ -270,7 +270,7 @@ public:
   /**
    * @fn getDataReady
    * @brief Get if a gesture is detected
-   * @return If the gesture is detected
+   * @return If a gesture is detected
    * @retval 1  Detected
    * @retval 0  Not detected
    */
