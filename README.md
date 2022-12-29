@@ -45,7 +45,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn enGestures
-   * @brief Set what the gestures that can be recognized by the module before triggering interrupt
+   * @brief Set what gestures the module can recognize to trigger interrupt
    * @param gestures
    *  GESTURE_UP
    *  GESTURE_DOWN
