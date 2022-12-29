@@ -24,7 +24,7 @@
 #include <SoftwareSerial.h>
 #endif
 
-//#define UARTMODE // Serial mode
+//#define UARTMODE // UART mode
 #define I2CMODE // I2C mode
 #if defined UARTMODE
 #if defined(ARDUINO_AVR_UNO)||defined(ESP8266)
@@ -89,7 +89,7 @@ void setup()
 
 /**
  * Set the detection window you want, only data collected in the range are valid
- * The largest window is 30, the configured number represents distance from the center to the top, bottom, left and right
+ * The largest window is 30, the configured number represents distance from the ceter to top & bottom or left & right
  * For example, if the configured distance from top to bottom is 30, then the distance from center to top is 15, and distance from center to bottom is also 15
  * udSize Distance from top to bottom      distance range 1-30
  * lrSize Distance from left to right      distance range 1-30
@@ -98,7 +98,7 @@ void setup()
 //   gr10_30.setHovrWin(20, 20);
 
 /**
- * Set moving distance that can be recognized as a gesture
+ * Set how far your hand should move left/right/up/down so the sensor can recognize it as gesture
  * Distance range 5-25, must be less than distances of the detection window
  */
 //   gr10_30.setLeftRange(10);
@@ -106,20 +106,20 @@ void setup()
 //   gr10_30.setUpRange(10);
 //   gr10_30.setDownRange(10);
 /**
- * Set distance of moving forward and backward that can be recognized as a gesture
+ * Set how far your hand should move forward/backward so the sensor can recognize it as gesture
  * Distance range 1-15
  */
 //   gr10_30.setForwardRange(10);
 //   gr10_30.setBackwardRange(10);
 
 /**
- * Set wave number that can be recognized
+ * Set how many times you need to wave hands so the sensor can recognize it
  * Number range 1-15
  */
 //   gr10_30.setWaveNumber(2);
 
 /**
- * Set hover time that can trigger the gesture
+ * Set how long your hand should hover to trigger the gesture
  * 1 - 200  10ms-2s  default is 60 600ms
  */
 //   gr10_30.setHovrTimer(60);
@@ -127,18 +127,18 @@ void setup()
 
 /**
  * Set rotation angle that can trigger the gesture
- * count Default is 16 range 1-31
- * count Rotation angle is 22.5 * count
- * count = 16 22.5*count = 360  Rotate 360° to trigger the gesture
+ * count Default 16, range 1-31
+ * count Rotation angle = 22.5 * count
+ * count = 16, 22.5*count = 360  Rotate 360° to trigger the gesture
  */
 //   gr10_30.setCwsAngle(/*count*/16);
 //   gr10_30.setCcwAngle(/*count*/16);
 
 /**
- * Set degrees of continuous rotation that can trigger the gesture
- * count Default is 4 range 1-31
- * count The degrees of continuous rotation is 22.5 * count
- * For example: count = 4 22.5*count = 90
+ * Set how many degrees your hand should rotate clockwise/cunterclockwise to trigger the gesture
+ * count Default 4, range 1-31
+ * count Continuous rotation angle = 22.5 * count
+ * For example: count = 4, 22.5*count = 90
  * Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
  */
 //   gr10_30.setCwsAngleCount(/*count*/4);
