@@ -75,7 +75,7 @@ Download the library file (https://github.com/DFRobot/DFRobot_GR10_30) and its d
 
   /**
    * @fn setLeftRange
-   * @brief SSet how far your hand should move to the left so the sensor can recognize it
+   * @brief Set how far your hand should move to the left so the sensor can recognize it
    * @param range
    * @n     Distance range 5-25, must be less than distance from left to right of the detection window
    * @return NONE
