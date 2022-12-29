@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 - [中文版](./README_CN.md)
 
-The SEN0543 is an integrated gesture recognition sensor that can be used for image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave.
+The GR10-30 gesture sensor is an integrated gesture recognition sensor based on image analysis. It is capable of recognizing 12 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise, rotate clockwise & counterclockwise continuously, hover, and wave.
 
 ![产品效果图](../../resources/images/SEN0543.png)
 
@@ -22,10 +22,10 @@ The SEN0543 is an integrated gesture recognition sensor that can be used for ima
 
 ## Summary
 
-Maximum Recognition distance of 30cm<br/>
-Capable of recognizing 12 gestures<br/>
-Configurable recognition threshold & other parameters<br/>
-Support UART & I2C communication
+* Maximum Recognition distance of 30cm<br/>
+* Capable of recognizing 12 gestures<br/>
+* Configurable recognition threshold & other parameters<br/>
+* Support UART & I2C communication
 
 ## Installation
 
@@ -43,7 +43,7 @@ Download the library file before use, paste them into the specified directory, t
 
   def en_gestures(self, gestures):
     '''!
-      @brief Set the gestures that can be recognized by the module and trigger interrupt
+      @brief Set what gestures the module can recognize to trigger interrupt
       @param gestures Set the gesture to be enabled
       @n     GESTURE_UP
       @n     GESTURE_DOWN
@@ -64,7 +64,7 @@ Download the library file before use, paste them into the specified directory, t
 
   def set_udlr_win(self, ud_size, lr_size):
     '''!
-      @brief Set the detection window you want
+      @brief Set the detection window 
       @param udSize Distance from top to bottom      distance range 1-30
       @param lrSize Distance from left to right      distance range 1-30
       @return NONE
@@ -72,7 +72,7 @@ Download the library file before use, paste them into the specified directory, t
 
   def set_left_range(self, range):
     '''!
-      @brief Set distance of moving to left that can be recognized
+      @brief Set how far your hand should move to the left so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from left to right of the detection window
       @return NONE
@@ -80,42 +80,42 @@ Download the library file before use, paste them into the specified directory, t
 
   def set_right_range(self, range):
     '''!
-      @brief Set distance of moving to right that can be recognized
+      @brief Set how far your hand should move to the right so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from left to right of the detection window
     '''
 
   def set_up_range(self, range):
     '''!
-      @brief Set distance of moving up that can be recognized
+      @brief Set how far your hand should move up so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
     '''
 
   def set_down_range(self, range):
     '''!
-      @brief Set distance of moving down that can be recognized
+      @brief Set how far your hand should move down so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
     '''
 
   def set_forward_range(self, range):
     '''!
-      @brief Set distance of moving forward that can be recognized
+      @brief Set how far your hand should move forward so the sensor can recognize it
       @param range
       @n     Distance range 1-15
     '''
 
   def set_backward_range(self, range):
     '''!
-      @brief Set distance of moving backward that can be recognized
+      @brief Set how far your hand should move backward so the sensor can recognize it
       @param range
       @n     Distance range 1-15
     '''
 
   def set_wave_number(self, number):
     '''!
-      @brief Set wave number that can be recognized
+      @brief Set how many times you need to wave hands so the sensor can recognize it
       @param number
       @n     Number range 1-15
       @return NONE
@@ -131,45 +131,47 @@ Download the library file before use, paste them into the specified directory, t
 
   def set_hover_timer(self, timer):
     '''!
-      @brief Set hover time that can trigger the gesture
+      @brief Set how long your hand should hover to trigger the gesture
       @param timer Each value represents 10ms
       @n     timer Maximum is 200  default is 60 600ms
     '''
 
   def set_cws_angle(self, count):
     '''!
-      @brief Set clockwise rotation angle that can trigger the gesture
-      @param count Default is 16 maximum is 31
-      @n     count Rotation angle is 22.5 * count
-      @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
+      @brief Set how many degrees your hand should rotate clockwise to trigger the gesture
+      @param count Default 16, maximum 31
+      @n     count Rotation angle = 22.5 * count
+      @n     For example: count = 16, 22.5*count = 360, rotate 360° to trigger the gesture
       @return NONE
     '''
 
   def set_ccw_angle(self, count):
     '''!
-      @brief Set counterclockwise rotation angle that can trigger the gesture
-      @param count Default is 16 maximum is 31
-      @n     count Rotation angle is 22.5 * count
-      @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
+      @brief Set how many degrees your hand should rotate counterclockwise to trigger the gesture
+      @param count Default 16, maximum 31
+      @n     count Rotation angle = 22.5 * count
+      @n     For example: count = 16, 22.5*count = 360, rotate 360° to trigger the gesture
       @return NONE
     '''
     
   def set_cws_angle_count(self, count):
     '''!
-      @brief Set continuous clockwise rotation angle that can trigger the gesture
-      @param count Default is 4 maximum is 31
-      @n     count The degree of continuous rotation is 22.5 * count
+      @brief Set how many degrees your hand should rotate clockwise continuously to trigger the gesture
+      @param count Default 4, maximum 31
+      @n     count Continuous rotation angle = 22.5 * count
       @n     For example: count = 4 22.5*count = 90
-      @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
+      @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+      @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90°
       @return NONE
     '''
   def set_ccw_angle_count(self, count):
     '''!
-      @brief Set continuous counterclockwise rotation angle that can trigger the gesture
-      @param count Default is 4 maximum is 31
-      @n     count The degree of continuous rotation is 22.5 * count
+      @brief Set how many degrees your hand should rotate counterclockwise continuously to trigger the gesture
+      @param count Default 4, maximum 31
+      @n     count Continuous rotation angle = 22.5 * count
       @n     For example: count = 4 22.5*count = 90
-      @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
+      @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+      @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90°
       @return NONE
     '''
 ```
