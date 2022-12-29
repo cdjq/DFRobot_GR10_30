@@ -3,7 +3,7 @@ DFRobot_GR10_30
 
 - [中文版](./README_CN.md)
 
-The GR10-30 gesture sensor is an integrated gesture recognition sensor based on image analysis. It is capable of recognizing 12 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise, rotate clockwise & counterclockwise continuously, hover, and wave.
+The GR10-30 gesture sensor is an integrated gesture recognition sensor based on image analysis. It is capable of recognizing 10 hand gestures: move up, down, left, right, forward & backward, rotate clockwise & counterclockwise (continuously), hover, and wave. 
 
 ![产品效果图](../../resources/images/SEN0543.png)
 
@@ -13,12 +13,12 @@ The GR10-30 gesture sensor is an integrated gesture recognition sensor based on 
 
 ## Table of Contents
 
-  * [summary](#summary)
-  * [installation](#installation)
-  * [methods](#methods)
-  * [compatibility](#compatibility)
-  * [history](#history)
-  * [credits](#credits)
+  * [Summary](#summary)
+  * [Installation](#installation)
+  * [Methods](#methods)
+  * [Compatibility](#compatibility)
+  * [History](#history)
+  * [Credits](#credits)
 
 ## Summary
 
