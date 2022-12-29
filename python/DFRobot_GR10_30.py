@@ -30,28 +30,28 @@ DEV_ADDRESS               = 0x73
 GR30_10_INPUTREG_PID                           =0x00   #Device PID
 GR30_10_INPUTREG_VID                           =0x01   #VID of the device, fixed to be 0x3343
 GR30_10_INPUTREG_ADDR                          =0x02   #Device address of the module
-GR30_10_INPUTREG_BAUDRATE                      =0x03   #Serial baud rate
-GR30_10_INPUTREG_STOPBIT                       =0x04   #Serial check bit and stop bit
+GR30_10_INPUTREG_BAUDRATE                      =0x03   #UART baud rate
+GR30_10_INPUTREG_STOPBIT                       =0x04   #UART check bit and stop bit
 GR30_10_INPUTREG_VERSION                       =0x05   #Firmware version information
 GR30_10_INPUTREG_DATA_READY                    =0x06   #Data ready register
 GR30_10_INPUTREG_INTERRUPT_STATE               =0x07   #Gesture interrupt status
 GR30_10_INPUTREG_EXIST_STATE                   =0x08   #Presence status
-#Holding register
-GR30_10_HOLDINGREG_INTERRUPT_MODE               =0x09   #The gesture that can trigger interrupt
-GR30_10_HOLDINGREG_LRUP_WIN                     =0x0a   #The detection window you want
-GR30_10_HOLDINGREG_L_RANGE                      =0x0b   #Distance of moving to left
-GR30_10_HOLDINGREG_R_RANGE                      =0x0c   #Distance of moving to right
-GR30_10_HOLDINGREG_U_RANGE                      =0x0d   #Distance of moving up
-GR30_10_HOLDINGREG_D_RANGE                      =0x0e   #Distance of moving down 
-GR30_10_HOLDINGREG_FORWARD_RANGE                =0x0f   #Distance of moving forward
-GR30_10_HOLDINGREG_BACKWARD_RANGE               =0x10   #Distance of moving backward
-GR30_10_HOLDINGREG_WAVE_COUNT                   =0x11   #Number of waves
+#Holding Register
+GR30_10_HOLDINGREG_INTERRUPT_MODE               =0x09   #The gesture that can trigger an interrupt
+GR30_10_HOLDINGREG_LRUP_WIN                     =0x0a   #Detection window
+GR30_10_HOLDINGREG_L_RANGE                      =0x0b   #The distance your hand should move to the left
+GR30_10_HOLDINGREG_R_RANGE                      =0x0c   #The distance your hand should move to the right
+GR30_10_HOLDINGREG_U_RANGE                      =0x0d   #The distance your hand should move up
+GR30_10_HOLDINGREG_D_RANGE                      =0x0e   #The distance your hand should move down 
+GR30_10_HOLDINGREG_FORWARD_RANGE                =0x0f   #The distance your hand should move forward
+GR30_10_HOLDINGREG_BACKWARD_RANGE               =0x10   #The distance your hand should move backward
+GR30_10_HOLDINGREG_WAVE_COUNT                   =0x11   #The times you need to wave hands
 GR30_10_HOLDINGREG_HOVR_WIN                     =0x12   #Hover detection window
-GR30_10_HOLDINGREG_HOVR_TIMER                   =0x13   #Hovering time
-GR30_10_HOLDINGREG_CWS_ANGLE                    =0x14   #Clockwise rotation angle, each value represents 22.5 degrees
-GR30_10_HOLDINGREG_CCW_ANGLE                    =0x15   #Counterclockwise rotation angle, each value represents 22.5 degrees
-GR30_10_HOLDINGREG_CWS_ANGLE_COUNT              =0x16   #Continuous clockwise rotation angle, each value represents 22.5 degrees
-GR30_10_HOLDINGREG_CCW_ANGLE_COUNT              =0x17   #Continuous counterclockwise rotation angle, each value represents 22.5 degrees
+GR30_10_HOLDINGREG_HOVR_TIMER                   =0x13   #The duration your hand should hover
+GR30_10_HOLDINGREG_CWS_ANGLE                    =0x14   #Clockwise rotation angle, each value equals 22.5°
+GR30_10_HOLDINGREG_CCW_ANGLE                    =0x15   #Counterclockwise rotation angle, each value equals 22.5°
+GR30_10_HOLDINGREG_CWS_ANGLE_COUNT              =0x16   #Continuous clockwise rotation angle, each value equals 22.5°
+GR30_10_HOLDINGREG_CCW_ANGLE_COUNT              =0x17   #Continuous counterclockwise rotation angle, each value equals 22.5°
 GR30_10_HOLDINGREG_RESET                        =0x18   #Reset sensor
 
 GESTURE_UP                      = (1<<0)
@@ -108,7 +108,7 @@ class DFRobot_GR10_30():
 
   def en_gestures(self, gestures):
     '''!
-      @brief Set the gestures that can be recognized by the module and trigger interrupt
+      @brief Set what gestures the module can recognize to trigger interrupt
       @param gestures The gesture to be enabled
       @n     GESTURE_UP
       @n     GESTURE_DOWN
@@ -138,7 +138,7 @@ class DFRobot_GR10_30():
 
   def set_udlr_win(self, ud_size, lr_size):
     '''!
-      @brief Set the detection window you want
+      @brief Set the detection window 
       @param udSize Distance from top to bottom      distance range 1-30
       @param lrSize Distance from left to right      distance range 1-30
       @return NONE
@@ -156,7 +156,7 @@ class DFRobot_GR10_30():
 
   def set_left_range(self, range):
     '''!
-      @brief Set distance of moving to left that can be recognized
+      @brief Set how far your hand should move to the left so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from left to right of the detection window
       @return NONE
@@ -173,7 +173,7 @@ class DFRobot_GR10_30():
 
   def set_right_range(self, range):
     '''!
-      @brief Set distance of moving to right that can be recognized
+      @brief Set how far your hand should move to the right so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from left to right of the detection window
     '''
@@ -189,7 +189,7 @@ class DFRobot_GR10_30():
 
   def set_up_range(self, range):
     '''!
-      @brief Set distance of moving up that can be recognized
+      @brief Set how far your hand should move up so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
     '''
@@ -205,7 +205,7 @@ class DFRobot_GR10_30():
 
   def set_down_range(self, range):
     '''!
-      @brief Set distance of moving down that can be recognized
+      @brief Set how far your hand should move down so the sensor can recognize it
       @param range
       @n     Distance range 5-25, must be less than distance from top to bottom of the detection window
     '''
@@ -221,7 +221,7 @@ class DFRobot_GR10_30():
 
   def set_forward_range(self, range):
     '''!
-      @brief Set distance of moving forward that can be recognized
+      @brief Set how far your hand should move forward so the sensor can recognize it
       @param range
       @n     Distance range 1-15
     '''
@@ -237,7 +237,7 @@ class DFRobot_GR10_30():
 
   def set_backward_range(self, range):
     '''!
-      @brief Set distance of moving backward that can be recognized
+      @brief Set how far your hand should move backward so the sensor can recognize it 
       @param range
       @n     Distance range 1-15
     '''
@@ -253,7 +253,7 @@ class DFRobot_GR10_30():
 
   def set_wave_number(self, number):
     '''!
-      @brief Set wave number that can be recognized
+      @brief Set how many times you need to wave hands so the sensor can recognize it
       @param number
       @n     Number range 1-15
       @return NONE
@@ -288,7 +288,7 @@ class DFRobot_GR10_30():
 
   def set_hover_timer(self, timer):
     '''!
-      @brief Set hover time that can trigger the gesture
+      @brief Set how long your hand should hover to trigger the gesture
       @param timer Each value is 10ms
       @n     timer Maximum is 200  default is 60 600ms
     '''
@@ -304,10 +304,10 @@ class DFRobot_GR10_30():
     
   def set_cws_angle(self, count):
     '''!
-      @brief Set clockwise rotation angle that can trigger the gesture
-      @param count Default is 16 maximum is 31
-      @n     count Rotation angle is 22.5 * count
-      @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
+      @brief Set how many degrees your hand should rotate clockwise to trigger the gesture
+      @param count Default 16, maximum 31
+      @n     count Rotation angle = 22.5 * count
+      @n     For example: count = 16, 22.5*count = 360, rotate 360° to trigger the gesture
       @return NONE
     '''
     count = count&0x1f
@@ -322,10 +322,10 @@ class DFRobot_GR10_30():
 
   def set_ccw_angle(self, count):
     '''!
-      @brief Set counterclockwise rotation angle that can trigger the gesture
-      @param count Default is 16 maximum is 31
-      @n     count Rotation angle is 22.5 * count
-      @n     For example: count = 16 22.5*count = 360  rotate 360° to trigger the gesture
+      @brief Set how many degrees your hand should rotate counterclockwise to trigger the gesture
+      @param count Default 16, maximum 31
+      @n     count Rotation angle = 22.5 * count
+      @n     For example: count = 16, 22.5*count = 360, rotate 360° to trigger the gesture
       @return NONE
     '''
     count = count&0x1f
@@ -340,11 +340,12 @@ class DFRobot_GR10_30():
     
   def set_cws_angle_count(self, count):
     '''!
-      @brief Set continuous clockwise rotation angle that can trigger the gesture
-      @param count Default is 4 maximum is 31
-      @n     count The degree of continuous rotation is 22.5 * count
+      @brief Set how many degrees your hand should rotate clockwise continuously to trigger the gesture
+      @param count Default 4, maximum 31
+      @n     count Continuous rotation angle = 22.5 * count
       @n     For example: count = 4 22.5*count = 90
-      @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
+      @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+      @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
       @return NONE
     '''
     count = count&0x1f 
@@ -359,11 +360,12 @@ class DFRobot_GR10_30():
 
   def set_ccw_angle_count(self, count):
     '''!
-      @brief Set continuous counterclockwise rotation angle that can trigger the gesture
-      @param count Default is 4 maximum is 31
-      @n     count The degree of continuous rotation is 22.5 * count
+      @brief Set how many degrees your hand should rotate counterclockwise continuously to trigger the gesture
+      @param count Default 4, maximum 31
+      @n     count Continuous rotation angle = 22.5 * count
       @n     For example: count = 4 22.5*count = 90
-      @n     Trigger the clockwise/counterclockwise rotation gesture first, if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
+      @n     Trigger the clockwise/counterclockwise rotation gesture first, 
+      @n     if keep rotating, then the continuous rotation gesture will be triggered once every 90 degrees
       @return NONE
     '''
     count = count&0x1f
@@ -396,7 +398,7 @@ class DFRobot_GR10_30():
   def get_data_ready(self):
     '''!
       @brief Get if a gesture is detected
-      @return If the gesture is detected
+      @return If a gesture is detected
       @retval True  Detected
       @retval False  Not detected
     '''
@@ -443,8 +445,8 @@ class DFRobot_GR10_30():
   
   def get_exist(self):
     '''!
-      @brief Get whether the object is in the detection range of sensor
-      @return If the object is in the detection range of sensor
+      @brief Get whether the object is in the sensor detection range
+      @return If the object is in the sensor detection range
       @retval 0 No
       @retval 1 Yes
     '''
