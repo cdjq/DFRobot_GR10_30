@@ -21,10 +21,10 @@ The GR10-30 gesture sensor is an integrated gesture recognition sensor based on 
 
 ## Summary
 
-Maximum Recognition distance of 30cm<br/>
-Capable of recognizing 12 gestures<br/>
-Configurable recognition threshold & other parameters<br/>
-Support UART & I2C communication
+* Maximum Recognition distance of 30cm<br/>
+* Capable of recognizing 12 gestures<br/>
+* Configurable recognition threshold & other parameters<br/>
+* Support UART & I2C communication
 
 
 ## Installation
