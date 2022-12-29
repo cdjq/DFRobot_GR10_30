@@ -121,7 +121,7 @@ void setup()
 //   gr10_30.setCcwAngle(/*count*/16);
 
 /**
- * Set how many degrees your hand should rotate clockwise/cunterclockwise continuously to trigger the gesture
+ * Set how many degrees your hand should rotate clockwise/counterclockwise continuously to trigger the gesture
  * count Default 4, range 0-31
  * count Continuous rotation angle = 22.5 * count
  * For example: count = 4, 22.5*count = 90
