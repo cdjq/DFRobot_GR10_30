@@ -219,7 +219,6 @@ uint16_t DFRobot_GR10_30::getExist(void)
     return 0;
   }
   return ((uint16_t)_sendData[0]<<8)+ _sendData[1];
-  
 }
 
 uint16_t DFRobot_GR10_30::getDataReady(void)
@@ -235,7 +234,6 @@ uint16_t DFRobot_GR10_30::getDataReady(void)
 uint16_t DFRobot_GR10_30::getGesturesState(void)
 {
   uint8_t _sendData[10] = {0};
-  
   if(0xff == readReg(R_INTERRUPT_STATE, _sendData, 2)){
     return 0;
   }

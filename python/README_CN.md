@@ -5,12 +5,12 @@ DFRobot_GR10_30
 
 SEN0543是一个用于图像分析传感器系统的集成姿态识别传感器。它可以识别10种手势，如上、下、左、右、前、后、圆顺时针、圆逆时针、摆动和悬停。
 
-![产品效果图片](../../resources/images/SEN0543.png)
+![产品效果图片](../resources/images/SEN0543_forward.jpg)  <img src="../resources/images/SEN0543_back.jpg" alt="产品效果图" style="zoom:80%;" />
 
-## 产品链接（https://www.dfrobot.com）
+## 产品链接（https://www.dfrobot.com.cn/goods-3655.html）
 
     SKU：SEN0543
-  
+
 ## 目录
 
   * [概述](#概述)

@@ -35,7 +35,7 @@
 #endif
 #endif
 #if defined I2CMODE
-DFRobot_GR10_30 gr10_30(/*addr = */GR10_30_DEVICE_ADDR, /*pWire = */&Wire);
+DFRobot_GR10_30 gr10_30(/*addr = */, /*pWire = */&Wire);
 #endif
 
 volatile uint8_t interruptFlag = 0;
